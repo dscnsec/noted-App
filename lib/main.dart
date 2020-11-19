@@ -34,25 +34,24 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xff264753),
         body: ListView(
           children: <Widget>[
             Center(
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.5,
-                width: MediaQuery.of(context).size.width * 0.83,
-                child: Image.asset('images/coverImage.png'),
+                height: MediaQuery.of(context).size.height * 1.0,
+                width: MediaQuery.of(context).size.width * 1.0,
+                child: Image.asset('images/coverdark.png'),
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.5,
               width: MediaQuery.of(context).size.width * 0.83,
               child: Column(
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-
-                  Padding(
+                  /*Padding(
                     padding: EdgeInsets.only(left: 20.0),
                     child: Text(
                       'Noted',
@@ -71,33 +70,35 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.transparent,
                         height: MediaQuery.of(context).size.height * 0.3,
                         width: MediaQuery.of(context).size.width * 0.75,
-                        child: Text(appInfoClass.appInfo,
-                        style: TextStyle(
-                          fontFamily: 'productSans',
-                          fontSize: 21.0,
-
+                        child: Text(
+                          appInfoClass.appInfo,
+                          style: TextStyle(
+                            fontFamily: 'productSans',
+                            fontSize: 15.0,
+                          ),
                         ),
-                        ),
-                      )),
-                                  Padding(
-              padding: EdgeInsets.only(right: 20.0, top:20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  RaisedButton(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 30.0, vertical: 15.0),
-                      color: Color(0xFF7178C7),
-                      child: Text(
-                        "Get Started",
-                        style: TextStyle(fontSize: 18.0, color: Colors.white),
-                      ),
-                      onPressed: () {},
-                      shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)))
-                ],
-              ),
-            ),
+                      )),*/
+                  Padding(
+                    padding:
+                        EdgeInsets.only(right: 20.0, top: 0.0, bottom: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        RaisedButton(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 30.0, vertical: 15.0),
+                            color: Color(0xFFE8C46A),
+                            child: Text(
+                              "Get Started",
+                              style: TextStyle(
+                                  fontSize: 18.0, color: Colors.white),
+                            ),
+                            onPressed: () {},
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(30.0)))
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
