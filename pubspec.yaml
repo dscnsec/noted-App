@@ -76,8 +76,19 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   fonts:
+    - family: timesnewroman
+      fonts:
+        - asset: fonts/times-new-roman.ttf
+          weight: 700
+    - family: RobotoMono
+      fonts:
+        - asset: fonts/RobotoMono-Regular.ttf
+        - asset: fonts/RobotoMono-Light.ttf
+        - asset: fonts/RobotoMono-Bold.ttf
+          weight: 700
     - family: productSans
       fonts:
         - asset: fonts/GoogleSans-Bold.ttf
         - asset: fonts/GoogleSans-Regular.ttf
         - asset: fonts/GoogleSans-Medium.ttf
+
