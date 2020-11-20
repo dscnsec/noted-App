@@ -20,22 +20,23 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     IconButton(icon: Icon(Icons.menu), onPressed: () {}),
                     Text(
-                      'Noted',
+                      'noted',
                       style: TextStyle(
-                        fontSize: 28.0,
+                        fontSize: 45.0,
+                        fontFamily: 'timesnewroman',
                       ),
                     ),
                     CircleAvatar(
                       minRadius: 25.0,
-                      backgroundColor: Colors.grey,
+                      backgroundColor: Color(0xfffbfcfc),
                     )
                   ],
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  left: 20.0,
-                  right: 10.0,
+                  left: 28.0,
+                  right: 28.0,
                   bottom: 10.0,
                   top: 20.0,
                 ),
@@ -45,12 +46,15 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       'My Notes',
                       style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.bold),
+                          fontSize: 20.0,
+                          fontFamily: 'RobotoMono',
+                          fontWeight: FontWeight.bold),
                     ),
                     Text(
                       'View all',
                       style: TextStyle(
                         fontSize: 17.0,
+                        fontFamily: 'RobotoMono',
                         fontWeight: FontWeight.w300,
                       ),
                     ),
@@ -65,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                       height: MediaQuery.of(context).size.height * 1.0,
                       width: MediaQuery.of(context).size.width * 1.0,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Color(0xfffbfcfc),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(55.0),
                           topRight: Radius.circular(55.0),
@@ -83,9 +87,12 @@ class _HomePageState extends State<HomePage> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: <Widget>[
-                          CourseCard('coverdark.png', 'Android is love'),
-                          CourseCard('coverImage.png', 'Flutter OP'),
-                          CourseCard('teacher.png', 'Varun tatti hai'),
+                          CourseCard('Orange.png', 'Computer Architecture',
+                              'big daddy'),
+                          CourseCard(
+                              'Orange.png', 'Operating System', 'big daddy'),
+                          CourseCard(
+                              'Orange.png', 'Machine Learning', 'big daddy'),
                         ],
                       ),
                     ),
@@ -101,18 +108,26 @@ class _HomePageState extends State<HomePage> {
 class CourseCard extends StatelessWidget {
   final String imgPath;
   final String courseName;
+  final String teacher;
 
-  CourseCard(this.imgPath, this.courseName);
+  CourseCard(this.imgPath, this.courseName, this.teacher);
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(15.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey[200],
+          color: Color(0xfffbfcfc),
+          //color: Colors.grey[200],
           borderRadius: BorderRadius.all(
             Radius.circular(30.0),
           ),
+          boxShadow: [
+            new BoxShadow(
+              color: Color(0xffe2e2e2),
+              blurRadius: 6.0,
+            ),
+          ],
         ),
         height: MediaQuery.of(context).size.height * 0.25,
         width: MediaQuery.of(context).size.width * 0.4,
@@ -121,10 +136,21 @@ class CourseCard extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 15.0),
+                padding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 0.0),
+                //padding: EdgeInsets.only(top: 10.0),
+                child: Text(
+                  courseName,
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      fontFamily: 'RobotoMono',
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 5.0),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.15,
-                  width: MediaQuery.of(context).size.width * 0.3,
+                  height: MediaQuery.of(context).size.height * 0.10,
+                  width: MediaQuery.of(context).size.width * 0.4,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('images/$imgPath'),
@@ -133,10 +159,14 @@ class CourseCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 10.0),
+                padding: EdgeInsets.fromLTRB(10.0, 5.0, 65.0, 0.0),
+                //padding: EdgeInsets.only(top: 0.0),
                 child: Text(
-                  courseName,
-                  style: TextStyle(fontSize: 15.0),
+                  teacher,
+                  style: TextStyle(
+                      fontSize: 15.0,
+                      fontFamily: 'RobotoMono',
+                      fontWeight: FontWeight.bold),
                 ),
               ),
             ],
