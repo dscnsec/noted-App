@@ -129,27 +129,31 @@ class CourseCard extends StatelessWidget {
             ),
           ],
         ),
-        height: MediaQuery.of(context).size.height * 0.25,
-        width: MediaQuery.of(context).size.width * 0.4,
-        child: Center(
+        height: MediaQuery.of(context).size.height * 0.3,
+        width: MediaQuery.of(context).size.width * 0.45,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 0.0),
-                //padding: EdgeInsets.only(top: 10.0),
-                child: Text(
-                  courseName,
-                  style: TextStyle(
-                      fontSize: 20.0,
-                      fontFamily: 'RobotoMono',
-                      fontWeight: FontWeight.bold),
+              Flexible(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 0.0),
+                  //padding: EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    courseName,
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'RobotoMono',
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 5.0),
+                padding: EdgeInsets.only(top: 0.0),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.10,
+                  height: MediaQuery.of(context).size.height * 0.12,
                   width: MediaQuery.of(context).size.width * 0.4,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -159,7 +163,7 @@ class CourseCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(10.0, 5.0, 65.0, 0.0),
+                padding: EdgeInsets.only(left: 0.0),
                 //padding: EdgeInsets.only(top: 0.0),
                 child: Text(
                   teacher,
