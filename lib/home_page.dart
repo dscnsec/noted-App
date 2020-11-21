@@ -13,7 +13,7 @@ class _HomePageState extends State<HomePage> {
     double screenSize = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Color(0xFFfcca46),
+          backgroundColor: Color(0xFF619b8a),
           body: ListView(
             children: <Widget>[
               Padding(
@@ -54,11 +54,11 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'View all',
+                      '-->',
                       style: TextStyle(
-                        fontSize: 17.0,
+                        fontSize: 15.0,
                         fontFamily: 'RobotoMono',
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],
@@ -93,24 +93,25 @@ class _HomePageState extends State<HomePage> {
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: <Widget>[
-                              CourseCard('Orange.png', 'Computer Architecture',
+                              CourseCard('Notes.png', 'Computer Architecture',
                                   'big daddy'),
-                              CourseCard('Orange.png', 'Operating System',
+                              CourseCard('Sheets.png', 'Operating System',
                                   'big daddy'),
-                              CourseCard('Orange.png', 'Machine Learning',
-                                  'big daddy'),
+                              CourseCard(
+                                  'Notes.png', 'Machine Learning', 'big daddy'),
                             ],
                           ),
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 25.0),
+                              horizontal: 28.0, vertical: 10.0),
                           child: Text(
                             'More to learn',
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30.0,
-                            ),
+                                //fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                                fontFamily: 'RobotoMono',
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                         Padding(
@@ -119,11 +120,11 @@ class _HomePageState extends State<HomePage> {
                           child: Column(
                             children: <Widget>[
                               HorizontalCard('Machine Learning',
-                                  'John Kumar Doe', 'student.png'),
+                                  'John Kumar Doe', 'Book.png'),
                               HorizontalCard('Data Structures and Algorithm',
-                                  'John Das Doe', 'student.png'),
+                                  'John Das Doe', 'Openbook_.png'),
                               HorizontalCard('Computer Architecture',
-                                  'John Doe', 'student.png'),
+                                  'John Doe', 'Book.png'),
                             ],
                           ),
                         ),
@@ -163,7 +164,7 @@ class HorizontalCard extends StatelessWidget {
                 padding: EdgeInsets.all(15.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment
-                      .spaceEvenly, // PLAY AROUND WITH THIS, MAYBE CHANGE SPACEeVENLY TO SPACEbETWEEN
+                      .spaceEvenly, // PLAY AROUND WITH THIS, MAYBE CHANGE SPACEeVENLY TO SPACEbETWEEN XDXDXD the ROASSST
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Flexible(
@@ -171,7 +172,7 @@ class HorizontalCard extends StatelessWidget {
                         child: Text(
                           subjName,
                           style: TextStyle(
-                              fontSize: screenSize > 700 ? 22.0 : 17,
+                              fontSize: screenSize > 700 ? 22.0 : 20,
                               fontFamily: 'RobotoMono',
                               fontWeight: FontWeight.bold),
                         ),
@@ -184,7 +185,7 @@ class HorizontalCard extends StatelessWidget {
                           style: TextStyle(
                               fontSize: screenSize > 700 ? 15.0 : 13,
                               fontFamily: 'RobotoMono',
-                              fontWeight: FontWeight.w300),
+                              fontWeight: FontWeight.w700),
                         ),
                       ),
                     ),
@@ -202,11 +203,9 @@ class HorizontalCard extends StatelessWidget {
                   topRight: Radius.circular(30.0),
                   bottomRight: Radius.circular(30.0),
                 ),
-                color: Colors.red,
-                // image: DecorationImage(
-                //   image: AssetImage('images/$imgpPath'),
-                //   fit: BoxFit.cover
-                // ),
+                //color: Colors.red,
+                image: DecorationImage(
+                    image: AssetImage('images/$imgpPath'), fit: BoxFit.cover),
               ),
             )
           ],
@@ -216,7 +215,7 @@ class HorizontalCard extends StatelessWidget {
             : MediaQuery.of(context).size.height * 0.22,
         width: MediaQuery.of(context).size.width * 0.9,
         decoration: BoxDecoration(
-          color: Color(0xFFfcca46),
+          color: Color(0xfffbfcfc),
           //color: Colors.grey[200],
           borderRadius: BorderRadius.all(
             Radius.circular(30.0),
@@ -279,6 +278,17 @@ class CourseCard extends StatelessWidget {
                 ),
               ),
               Padding(
+                padding: EdgeInsets.only(left: 0.0),
+                //padding: EdgeInsets.only(top: 0.0),
+                child: Text(
+                  teacher,
+                  style: TextStyle(
+                      fontSize: 15.0,
+                      fontFamily: 'RobotoMono',
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
                 padding: EdgeInsets.only(top: 0.0),
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.12,
@@ -288,17 +298,6 @@ class CourseCard extends StatelessWidget {
                         image: AssetImage('images/$imgPath'),
                         fit: BoxFit.cover),
                   ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 0.0),
-                //padding: EdgeInsets.only(top: 0.0),
-                child: Text(
-                  teacher,
-                  style: TextStyle(
-                      fontSize: 15.0,
-                      fontFamily: 'RobotoMono',
-                      fontWeight: FontWeight.bold),
                 ),
               ),
             ],
