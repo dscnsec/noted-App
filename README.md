@@ -25,6 +25,7 @@
 ![App Preview](UI.png)
 
 <br>
+
 ## Idea
 
 Find all your college syllabus notes and additional materials carefully curated but teachers in one place. Solve quizzes, discover subject topics, bookmark important notes and make studying easy.
