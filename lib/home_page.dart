@@ -5,8 +5,6 @@ import './explore_page.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -18,16 +16,63 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
           backgroundColor: Color(0xFF619b8a),
+          appBar: AppBar(
+            title: Text(
+              'noted',
+              style: TextStyle(
+                  fontSize: 38.0,
+                  fontFamily: 'timesnewroman',
+                  fontWeight: FontWeight.bold),
+            ),
+            centerTitle: true,
+            elevation: 0,
+            backgroundColor: Color(0xFF619b8a),
+          ),
+          drawer: Drawer(
+            child: ListView(
+              // Important: Remove any padding from the ListView.
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                DrawerHeader(
+                  child: Text('Drawer Header'),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF619b8a),
+                  ),
+                ),
+                ListTile(
+                  title: Text('Item 1'),
+                  onTap: () {
+                    // Update the state of the app.
+                    // ...
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  title: Text('Item 2'),
+                  onTap: () {
+                    // Update the state of the app.
+                    // ...
+                  },
+                ),
+              ],
+            ),
+          ),
+          //my wasteful attempt at drawer no.1
+
           body: ListView(
             children: <Widget>[
-              Padding(
+              //Did i just comment out the entire pseudo app bar? yes :O
+              /*Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    IconButton(icon: Icon(Icons.menu), onPressed: () {
-                      Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: ExplorePage()));
-                    }),
+                    IconButton(
+                        icon: Icon(Icons.menu),
+                        onPressed: () {
+                          //_scaffoldState.currentState.openDrawer();
+                          //Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: ExplorePage()));
+                        }),
                     Text(
                       'noted',
                       style: TextStyle(
@@ -41,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 ),
-              ),
+              ),*/
               Padding(
                 padding: EdgeInsets.only(
                   left: 28.0,
@@ -59,7 +104,8 @@ class _HomePageState extends State<HomePage> {
                           fontFamily: 'RobotoMono',
                           fontWeight: FontWeight.bold),
                     ),
-                    IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: (){})
+                    IconButton(
+                        icon: Icon(Icons.arrow_forward_ios), onPressed: () {})
                     // Text(
                     //   '-->',
                     //   style: TextStyle(
