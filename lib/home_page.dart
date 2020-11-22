@@ -1,6 +1,11 @@
 import 'dart:wasm';
 
 import 'package:flutter/material.dart';
+import './explore_page.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,7 +15,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    double screenSize = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
           backgroundColor: Color(0xFF619b8a),
@@ -21,7 +25,9 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    IconButton(icon: Icon(Icons.menu), onPressed: () {}),
+                    IconButton(icon: Icon(Icons.menu), onPressed: () {
+                      Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: ExplorePage()));
+                    }),
                     Text(
                       'noted',
                       style: TextStyle(
@@ -53,14 +59,15 @@ class _HomePageState extends State<HomePage> {
                           fontFamily: 'RobotoMono',
                           fontWeight: FontWeight.bold),
                     ),
-                    Text(
-                      '-->',
-                      style: TextStyle(
-                        fontSize: 15.0,
-                        fontFamily: 'RobotoMono',
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    IconButton(icon: Icon(Icons.arrow_forward_ios), onPressed: (){})
+                    // Text(
+                    //   '-->',
+                    //   style: TextStyle(
+                    //     fontSize: 15.0,
+                    //     fontFamily: 'RobotoMono',
+                    //     fontWeight: FontWeight.w500,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
