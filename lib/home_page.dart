@@ -1,9 +1,9 @@
 import 'dart:wasm';
 
 import 'package:flutter/material.dart';
-import './explore_page.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import './search_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,6 +17,15 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
           backgroundColor: Color(0xFF619b8a),
           appBar: AppBar(
+            actions: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: CircleAvatar(
+                  minRadius: 25.0,
+                  backgroundColor: Colors.white,
+                ),
+              )
+            ],
             title: Text(
               'noted',
               style: TextStyle(
@@ -50,8 +59,13 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                   title: Text('Item 2'),
                   onTap: () {
-                    // Update the state of the app.
-                    // ...
+                    Navigator.pop(context);
+                   
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: SearchPage()));
                   },
                 ),
               ],
