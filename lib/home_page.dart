@@ -49,7 +49,13 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 ListTile(
-                  title: Text('Item 1'),
+                  title: Text(
+                    'Search',
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'RobotoMono',
+                        fontWeight: FontWeight.w500),
+                  ),
                   onTap: () {
                     // Update the state of the app.
                     // ...
@@ -57,10 +63,16 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
                 ListTile(
-                  title: Text('Item 2'),
+                  title: Text(
+                    'Syllabus',
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        fontFamily: 'RobotoMono',
+                        fontWeight: FontWeight.w500),
+                  ),
                   onTap: () {
                     Navigator.pop(context);
-                   
+
                     Navigator.push(
                         context,
                         PageTransition(
