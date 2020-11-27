@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './search_page.dart';
+import './viewmore.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -83,7 +84,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          //my wasteful attempt at drawer no.1
+          //my wasteful (useful) attempt at drawer no.1
 
           body: ListView(
             children: <Widget>[
@@ -131,15 +132,15 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold),
                     ),
                     IconButton(
-                        icon: Icon(Icons.arrow_forward_ios), onPressed: () {})
-                    // Text(
-                    //   '-->',
-                    //   style: TextStyle(
-                    //     fontSize: 15.0,
-                    //     fontFamily: 'RobotoMono',
-                    //     fontWeight: FontWeight.w500,
-                    //   ),
-                    // ),
+                        icon: Icon(Icons.arrow_forward_ios),
+                        onPressed: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.leftToRight,
+                                  child: ViewMorePage()));
+                        })
                   ],
                 ),
               ),
@@ -173,11 +174,11 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             children: <Widget>[
                               CourseCard('Notes.png', 'Computer Architecture',
-                                  'big daddy'),
+                                  'Prof. XYZ'),
                               CourseCard('Sheets.png', 'Operating System',
-                                  'big daddy'),
+                                  'Prof. XYZ'),
                               CourseCard(
-                                  'Notes.png', 'Machine Learning', 'big daddy'),
+                                  'Notes.png', 'Machine Learning', 'Prof. XYZ'),
                             ],
                           ),
                         ),
@@ -320,7 +321,7 @@ class CourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(15.0),
+      padding: EdgeInsets.all(10.0),
       child: Container(
         decoration: BoxDecoration(
           color: Color(0xfffbfcfc),
