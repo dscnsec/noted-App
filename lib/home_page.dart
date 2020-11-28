@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                               context,
                               PageTransition(
-                                  type: PageTransitionType.leftToRight,
+                                  type: PageTransitionType.rightToLeftWithFade,
                                   child: ViewMorePage()));
                         })
                   ],
