@@ -3,7 +3,7 @@ import 'dart:wasm';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import './search_page.dart';
+import './syllabusPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -77,42 +77,16 @@ class _HomePageState extends State<HomePage> {
                         context,
                         PageTransition(
                             type: PageTransitionType.leftToRight,
-                            child: SearchPage()));
+                            child: SyllabusPage()));
                   },
                 ),
               ],
             ),
           ),
-          //my wasteful attempt at drawer no.1
 
           body: ListView(
             children: <Widget>[
-              //Did i just comment out the entire pseudo app bar? yes :O
-              /*Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    IconButton(
-                        icon: Icon(Icons.menu),
-                        onPressed: () {
-                          //_scaffoldState.currentState.openDrawer();
-                          //Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: ExplorePage()));
-                        }),
-                    Text(
-                      'noted',
-                      style: TextStyle(
-                        fontSize: 45.0,
-                        fontFamily: 'timesnewroman',
-                      ),
-                    ),
-                    CircleAvatar(
-                      minRadius: 25.0,
-                      backgroundColor: Color(0xfffbfcfc),
-                    )
-                  ],
-                ),
-              ),*/
+
               Padding(
                 padding: EdgeInsets.only(
                   left: 28.0,
@@ -132,14 +106,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     IconButton(
                         icon: Icon(Icons.arrow_forward_ios), onPressed: () {})
-                    // Text(
-                    //   '-->',
-                    //   style: TextStyle(
-                    //     fontSize: 15.0,
-                    //     fontFamily: 'RobotoMono',
-                    //     fontWeight: FontWeight.w500,
-                    //   ),
-                    // ),
+                  
                   ],
                 ),
               ),
