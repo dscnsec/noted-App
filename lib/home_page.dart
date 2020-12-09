@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './syllabusPage.dart';
+import './notePage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -286,67 +287,75 @@ class CourseCard extends StatelessWidget {
   CourseCard(this.imgPath, this.courseName, this.teacher);
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(15.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Color(0xfffbfcfc),
-          //color: Colors.grey[200],
-          borderRadius: BorderRadius.all(
-            Radius.circular(30.0),
-          ),
-          boxShadow: [
-            new BoxShadow(
-              color: Color(0xffe2e2e2),
-              blurRadius: 6.0,
+    return InkWell(
+      onTap:(){
+          Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => NotePage(imgPath,courseName)),
+  );
+      },
+          child: Padding(
+        padding: EdgeInsets.all(15.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color(0xfffbfcfc),
+            //color: Colors.grey[200],
+            borderRadius: BorderRadius.all(
+              Radius.circular(30.0),
             ),
-          ],
-        ),
-        height: MediaQuery.of(context).size.height * 0.3,
-        width: MediaQuery.of(context).size.width * 0.45,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Flexible(
-                child: Padding(
+            boxShadow: [
+              new BoxShadow(
+                color: Color(0xffe2e2e2),
+                blurRadius: 6.0,
+              ),
+            ],
+          ),
+          height: MediaQuery.of(context).size.height * 0.3,
+          width: MediaQuery.of(context).size.width * 0.45,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 0.0),
+                    //padding: EdgeInsets.only(top: 10.0),
+                    child: Text(
+                      courseName,
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          fontFamily: 'RobotoMono',
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Padding(
                   padding: EdgeInsets.only(left: 0.0),
-                  //padding: EdgeInsets.only(top: 10.0),
+                  //padding: EdgeInsets.only(top: 0.0),
                   child: Text(
-                    courseName,
+                    teacher,
                     style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 15.0,
                         fontFamily: 'RobotoMono',
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 0.0),
-                //padding: EdgeInsets.only(top: 0.0),
-                child: Text(
-                  teacher,
-                  style: TextStyle(
-                      fontSize: 15.0,
-                      fontFamily: 'RobotoMono',
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 0.0),
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.12,
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('images/$imgPath'),
-                        fit: BoxFit.cover),
+                Padding(
+                  padding: EdgeInsets.only(top: 0.0),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.12,
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('images/$imgPath'),
+                          fit: BoxFit.cover),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
