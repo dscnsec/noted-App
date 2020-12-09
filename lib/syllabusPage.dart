@@ -14,7 +14,7 @@ class _SyllabusPageState extends State<SyllabusPage> {
 
     return Scaffold(
       backgroundColor: Color(0xfffbfcfc),
-      appBar: AppBar(
+      /*appBar: AppBar(
         iconTheme: IconThemeData(color: Color(0xff619b8a)),
         actions: <Widget>[
           Padding(
@@ -36,10 +36,9 @@ class _SyllabusPageState extends State<SyllabusPage> {
         centerTitle: true,
         elevation: 0,
         backgroundColor: Color(0xfffbfcfc),
-      ),
+      ),*/
       body: ListView(
         children: <Widget>[
-      
           Padding(
             padding: EdgeInsets.all(10.0),
             child: Column(

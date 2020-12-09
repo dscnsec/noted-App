@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './syllabusPage.dart';
+import './viewallPage.dart';
 import './notePage.dart';
 
 class HomePage extends StatefulWidget {
@@ -84,14 +85,12 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-
           body: ListView(
             children: <Widget>[
-
               Padding(
                 padding: EdgeInsets.only(
                   left: 28.0,
-                  right: 28.0,
+                  right: 10.0,
                   bottom: 10.0,
                   top: 20.0,
                 ),
@@ -106,8 +105,17 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold),
                     ),
                     IconButton(
-                        icon: Icon(Icons.arrow_forward_ios), onPressed: () {})
-                  
+                      icon: Icon(Icons.arrow_forward_ios),
+                      onPressed: () {
+                        Navigator.pop(context);
+
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.leftToRight,
+                                child: ViewallPage()));
+                      },
+                    )
                   ],
                 ),
               ),
@@ -141,11 +149,11 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             children: <Widget>[
                               CourseCard('Notes.png', 'Computer Architecture',
-                                  'big daddy'),
-                              CourseCard('Sheets.png', 'Operating System',
-                                  'big daddy'),
+                                  'Prof XYZ'),
                               CourseCard(
-                                  'Notes.png', 'Machine Learning', 'big daddy'),
+                                  'Sheets.png', 'Operating System', 'Prof XYZ'),
+                              CourseCard(
+                                  'Notes.png', 'Machine Learning', 'Prof XYZ'),
                             ],
                           ),
                         ),
@@ -210,8 +218,7 @@ class HorizontalCard extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment
-                      .spaceEvenly, // PLAY AROUND WITH THIS, MAYBE CHANGE SPACEeVENLY TO SPACEbETWEEN XDXDXD the ROASSST
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Flexible(
@@ -288,13 +295,14 @@ class CourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:(){
-          Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => NotePage(imgPath,courseName)),
-  );
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => NotePage(imgPath, courseName)),
+        );
       },
-          child: Padding(
+      child: Padding(
         padding: EdgeInsets.all(15.0),
         child: Container(
           decoration: BoxDecoration(
