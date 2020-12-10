@@ -22,7 +22,7 @@
 
 <br>
 
-![App Preview](UI (1).png)
+![App Preview](UI1.png)
 
 <br>
 
