@@ -17,15 +17,17 @@ class _NotePageState extends State<NotePage> {
     return Scaffold(
       body: ListView(
         children: <Widget>[
+          //alternate UI decision
           Container(
-            height: MediaQuery.of(context).size.height * 0.5,
+            height: MediaQuery.of(context).size.height * 0.2,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(35.0),
                     bottomRight: Radius.circular(35.0)),
                 image: DecorationImage(
-                    image: AssetImage("images/Book.png"), fit: BoxFit.cover)),
+                    image: AssetImage("images/Covernotes.png"),
+                    fit: BoxFit.cover)),
           ),
           Align(
             alignment: Alignment.centerLeft,

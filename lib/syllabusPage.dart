@@ -14,29 +14,6 @@ class _SyllabusPageState extends State<SyllabusPage> {
 
     return Scaffold(
       backgroundColor: Color(0xfffbfcfc),
-      /*appBar: AppBar(
-        iconTheme: IconThemeData(color: Color(0xff619b8a)),
-        actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: CircleAvatar(
-              minRadius: 25.0,
-              backgroundColor: Color(0xFF619b8a),
-            ),
-          )
-        ],
-        title: Text(
-          'noted',
-          style: TextStyle(
-              fontSize: 38.0,
-              color: Color(0xFF619b8a),
-              fontFamily: 'timesnewroman',
-              fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Color(0xfffbfcfc),
-      ),*/
       body: ListView(
         children: <Widget>[
           Padding(
