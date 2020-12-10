@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './syllabusPage.dart';
 import './viewallPage.dart';
 import './notePage.dart';
+import './search_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -59,9 +60,13 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w500),
                   ),
                   onTap: () {
-                    // Update the state of the app.
-                    // ...
-                    Navigator.pop(context);
+                      Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: Searchpage()));
                   },
                 ),
                 ListTile(
@@ -107,12 +112,11 @@ class _HomePageState extends State<HomePage> {
                     IconButton(
                       icon: Icon(Icons.arrow_forward_ios),
                       onPressed: () {
-                        Navigator.pop(context);
 
                         Navigator.push(
                             context,
                             PageTransition(
-                                type: PageTransitionType.leftToRight,
+                                type: PageTransitionType.rightToLeft,
                                 child: ViewallPage()));
                       },
                     )
