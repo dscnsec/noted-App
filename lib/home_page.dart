@@ -3,6 +3,9 @@ import 'dart:wasm';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import './syllabusPage.dart';
+import './viewallPage.dart';
+import './notePage.dart';
 import './search_page.dart';
 import './viewmore.dart';
 
@@ -58,9 +61,13 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w500),
                   ),
                   onTap: () {
-                    // Update the state of the app.
-                    // ...
-                    Navigator.pop(context);
+                      Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: Searchpage()));
                   },
                 ),
                 ListTile(
@@ -78,46 +85,18 @@ class _HomePageState extends State<HomePage> {
                         context,
                         PageTransition(
                             type: PageTransitionType.leftToRight,
-                            child: SearchPage()));
+                            child: SyllabusPage()));
                   },
                 ),
               ],
             ),
           ),
-          //my wasteful (useful) attempt at drawer no.1
-
           body: ListView(
             children: <Widget>[
-              //Did i just comment out the entire pseudo app bar? yes :O
-              /*Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    IconButton(
-                        icon: Icon(Icons.menu),
-                        onPressed: () {
-                          //_scaffoldState.currentState.openDrawer();
-                          //Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: ExplorePage()));
-                        }),
-                    Text(
-                      'noted',
-                      style: TextStyle(
-                        fontSize: 45.0,
-                        fontFamily: 'timesnewroman',
-                      ),
-                    ),
-                    CircleAvatar(
-                      minRadius: 25.0,
-                      backgroundColor: Color(0xfffbfcfc),
-                    )
-                  ],
-                ),
-              ),*/
               Padding(
                 padding: EdgeInsets.only(
                   left: 28.0,
-                  right: 28.0,
+                  right: 10.0,
                   bottom: 10.0,
                   top: 20.0,
                 ),
@@ -132,6 +111,7 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold),
                     ),
                     IconButton(
+
                         icon: Icon(Icons.arrow_forward_ios),
                         onPressed: () {
                           Navigator.pop(context);
@@ -141,6 +121,17 @@ class _HomePageState extends State<HomePage> {
                                   type: PageTransitionType.rightToLeftWithFade,
                                   child: ViewMorePage()));
                         })
+                      icon: Icon(Icons.arrow_forward_ios),
+                      onPressed: () {
+
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.rightToLeft,
+                                child: ViewallPage()));
+                      },
+                    )
+
                   ],
                 ),
               ),
@@ -174,11 +165,19 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             children: <Widget>[
                               CourseCard('Notes.png', 'Computer Architecture',
+
                                   'Prof. XYZ'),
                               CourseCard('Sheets.png', 'Operating System',
                                   'Prof. XYZ'),
                               CourseCard(
                                   'Notes.png', 'Machine Learning', 'Prof. XYZ'),
+
+                                  'Prof XYZ'),
+                              CourseCard(
+                                  'Sheets.png', 'Operating System', 'Prof XYZ'),
+                              CourseCard(
+                                  'Notes.png', 'Machine Learning', 'Prof XYZ'),
+
                             ],
                           ),
                         ),
@@ -243,8 +242,7 @@ class HorizontalCard extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment
-                      .spaceEvenly, // PLAY AROUND WITH THIS, MAYBE CHANGE SPACEeVENLY TO SPACEbETWEEN XDXDXD the ROASSST
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Flexible(
@@ -320,6 +318,7 @@ class CourseCard extends StatelessWidget {
   CourseCard(this.imgPath, this.courseName, this.teacher);
   @override
   Widget build(BuildContext context) {
+
     return Padding(
       padding: EdgeInsets.all(10.0),
       child: Container(
@@ -333,54 +332,78 @@ class CourseCard extends StatelessWidget {
             new BoxShadow(
               color: Color(0xffe2e2e2),
               blurRadius: 6.0,
+
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => NotePage(imgPath, courseName)),
+        );
+      },
+      child: Padding(
+        padding: EdgeInsets.all(15.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color(0xfffbfcfc),
+            //color: Colors.grey[200],
+            borderRadius: BorderRadius.all(
+              Radius.circular(30.0),
+
             ),
-          ],
-        ),
-        height: MediaQuery.of(context).size.height * 0.3,
-        width: MediaQuery.of(context).size.width * 0.45,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Flexible(
-                child: Padding(
+            boxShadow: [
+              new BoxShadow(
+                color: Color(0xffe2e2e2),
+                blurRadius: 6.0,
+              ),
+            ],
+          ),
+          height: MediaQuery.of(context).size.height * 0.3,
+          width: MediaQuery.of(context).size.width * 0.45,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 0.0),
+                    //padding: EdgeInsets.only(top: 10.0),
+                    child: Text(
+                      courseName,
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          fontFamily: 'RobotoMono',
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Padding(
                   padding: EdgeInsets.only(left: 0.0),
-                  //padding: EdgeInsets.only(top: 10.0),
+                  //padding: EdgeInsets.only(top: 0.0),
                   child: Text(
-                    courseName,
+                    teacher,
                     style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 15.0,
                         fontFamily: 'RobotoMono',
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 0.0),
-                //padding: EdgeInsets.only(top: 0.0),
-                child: Text(
-                  teacher,
-                  style: TextStyle(
-                      fontSize: 15.0,
-                      fontFamily: 'RobotoMono',
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 0.0),
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.12,
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('images/$imgPath'),
-                        fit: BoxFit.cover),
+                Padding(
+                  padding: EdgeInsets.only(top: 0.0),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.12,
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('images/$imgPath'),
+                          fit: BoxFit.cover),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
