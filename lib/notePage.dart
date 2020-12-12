@@ -28,6 +28,7 @@ class _NotePageState extends State<NotePage> {
                     fit: BoxFit.cover)),
           ),
           Container(
+            // height: MediaQuery.of(context).size.height * 0.8,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -73,24 +74,29 @@ class _NotePageState extends State<NotePage> {
                         ),
                       ),
                     ),
-                    RaisedButton(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 30.0,
-                          vertical: 15.0,
-                        ),
-                        color: Color(0xFF29998C),
-                        child: Text(
-                          "Return to pathway",
-                          style: TextStyle(fontSize: 15.0, color: Colors.white),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => HomePage()),
-                          );
-                        },
-                        shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30.0)))
+                    Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: RaisedButton(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 30.0,
+                            vertical: 15.0,
+                          ),
+                          color: Color(0xFF29998C),
+                          child: Text(
+                            "Return to pathway",
+                            style:
+                                TextStyle(fontSize: 15.0, color: Colors.white),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()),
+                            );
+                          },
+                          shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0))),
+                    )
                   ],
                 ),
               ),
