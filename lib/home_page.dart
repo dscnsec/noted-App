@@ -1,5 +1,6 @@
 import 'dart:wasm';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,6 +8,7 @@ import './syllabusPage.dart';
 import './viewallPage.dart';
 import './notePage.dart';
 import './search_page.dart';
+import './chaptersPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -60,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w500),
                   ),
                   onTap: () {
-                      Navigator.pop(context);
+                    Navigator.pop(context);
 
                     Navigator.push(
                         context,
@@ -112,7 +114,6 @@ class _HomePageState extends State<HomePage> {
                     IconButton(
                       icon: Icon(Icons.arrow_forward_ios),
                       onPressed: () {
-
                         Navigator.push(
                             context,
                             PageTransition(
@@ -150,15 +151,22 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: <Widget>[
-                              CourseCard('Notes.png', 'Computer Architecture',
-                                  'Prof XYZ'),
-                              CourseCard(
-                                  'Sheets.png', 'Operating System', 'Prof XYZ'),
-                              CourseCard(
-                                  'Notes.png', 'Machine Learning', 'Prof XYZ'),
-                            ],
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: 0.0,
+                              right: 0.0,
+                              bottom: 30.0,
+                            ),
+                            child: Row(
+                              children: <Widget>[
+                                CourseCard('Notes.png', 'Computer Architecture',
+                                    'Prof XYZ'),
+                                CourseCard('Sheets.png', 'Operating System',
+                                    'Prof XYZ'),
+                                CourseCard('Notes.png', 'Machine Learning',
+                                    'Prof XYZ'),
+                              ],
+                            ),
                           ),
                         ),
                         Padding(
@@ -280,8 +288,9 @@ class HorizontalCard extends StatelessWidget {
           ),
           boxShadow: [
             new BoxShadow(
-              color: Color(0xffe2e2e2),
-              blurRadius: 6.0,
+              offset: Offset(0, 15),
+              color: Color(0xff666666).withOpacity(.11),
+              blurRadius: 30.0,
             ),
           ],
         ),
@@ -303,11 +312,11 @@ class CourseCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => NotePage(imgPath, courseName)),
+              builder: (context) => ChaptersPage(imgPath, courseName)),
         );
       },
       child: Padding(
-        padding: EdgeInsets.all(15.0),
+        padding: EdgeInsets.all(12.0),
         child: Container(
           decoration: BoxDecoration(
             color: Color(0xfffbfcfc),
@@ -317,22 +326,31 @@ class CourseCard extends StatelessWidget {
             ),
             boxShadow: [
               new BoxShadow(
-                color: Color(0xffe2e2e2),
-                blurRadius: 6.0,
+                offset: Offset(0, 15),
+                color: Color(0xff666666).withOpacity(.11),
+                blurRadius: 30.0,
               ),
             ],
           ),
-          height: MediaQuery.of(context).size.height * 0.3,
+          height: MediaQuery.of(context).size.height * 0.35,
+          //3
           width: MediaQuery.of(context).size.width * 0.45,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+            padding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+            //20 15
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Flexible(
                   child: Padding(
-                    padding: EdgeInsets.only(left: 0.0),
+                    padding: EdgeInsets.only(
+                      left: 20.0,
+                      right: 0.0,
+                      bottom: 10.0,
+                      top: 15.0,
+                    ),
+                    //padding: EdgeInsets.only(left: 20.0),
                     //padding: EdgeInsets.only(top: 10.0),
                     child: Text(
                       courseName,
@@ -344,7 +362,11 @@ class CourseCard extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 0.0),
+                  padding: EdgeInsets.only(
+                    left: 20.0,
+                    right: 0.0,
+                    bottom: 0.0,
+                  ),
                   //padding: EdgeInsets.only(top: 0.0),
                   child: Text(
                     teacher,
@@ -355,20 +377,85 @@ class CourseCard extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 0.0),
+                  padding: EdgeInsets.only(left: 10.0, bottom: 10.0),
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.12,
                     width: MediaQuery.of(context).size.width * 0.4,
                     decoration: BoxDecoration(
+                      //color: Colors.yellow,
                       image: DecorationImage(
                           image: AssetImage('images/$imgPath'),
                           fit: BoxFit.cover),
                     ),
                   ),
                 ),
+                //Spacer(),
+                Row(
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        width: 90,
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Details",
+                          style: TextStyle(
+                              fontSize: 12.0,
+                              fontFamily: 'RobotoMono',
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: TwoSideRoundedButton(
+                        text: "Read",
+                        press: () {},
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class TwoSideRoundedButton extends StatelessWidget {
+  final String text;
+  //final double radius;
+  final Function press;
+  const TwoSideRoundedButton({
+    Key key,
+    this.text,
+    //this.radius,
+    this.press,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: press,
+      child: Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: Color(0xFF619b8a),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            bottomRight: Radius.circular(30),
+          ),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 12.0,
+              fontFamily: 'RobotoMono',
+              fontWeight: FontWeight.bold),
         ),
       ),
     );

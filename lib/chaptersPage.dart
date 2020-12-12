@@ -1,29 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 import 'home_page.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class SyllabusPage extends StatefulWidget {
+import './viewallPage.dart';
+import './notePage.dart';
+import './search_page.dart';
+
+class ChaptersPage extends StatefulWidget {
+  final String subjName;
+  final String imgPath;
+
+  const ChaptersPage(this.imgPath, this.subjName);
   @override
-  _SyllabusPageState createState() => _SyllabusPageState();
+  _ChaptersPageState createState() => _ChaptersPageState();
 }
 
-class _SyllabusPageState extends State<SyllabusPage> {
+class _ChaptersPageState extends State<ChaptersPage> {
   @override
   Widget build(BuildContext context) {
-    double screenSize = MediaQuery.of(context).size.height;
-
+    String imagePath = widget.imgPath;
     return Scaffold(
       backgroundColor: Color(0xfffbfcfc),
       body: ListView(
         children: <Widget>[
           Padding(
+            padding: EdgeInsets.only(
+              left: 28.0,
+              right: 10.0,
+              bottom: 10.0,
+              top: 20.0,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  widget.subjName,
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      fontFamily: 'RobotoMono',
+                      fontWeight: FontWeight.bold),
+                ),
+                IconButton(
+                  icon: Icon(Icons.favorite),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            child: ViewallPage()));
+                  },
+                )
+              ],
+            ),
+          ),
+          Padding(
             padding: EdgeInsets.all(10.0),
             child: Column(
               children: <Widget>[
-                HorizontalCard('Computer is bad for computers', 'profName',
-                    'Openbook_.png'),
-                HorizontalCard('Computer is bad for computers', 'profName',
-                    'Openbook_.png'),
+                HorizontalCard('Chapter Name', 'profName', 'Openbook_.png'),
+                HorizontalCard('Chapter Name', 'profName', 'Openbook_.png'),
               ],
             ),
           ),
@@ -57,7 +95,7 @@ class HorizontalCard extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly, //
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Flexible(

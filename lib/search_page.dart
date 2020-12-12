@@ -1,57 +1,57 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './notePage.dart';
+
 class Searchpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return 
-  Scaffold(
+    return Scaffold(
         body: ListView(
       children: [
         Padding(
-          padding: EdgeInsets.only(right: 15.0, top: 20.0, left: 15.0),
-          child: Text(
+          padding: EdgeInsets.only(right: 15.0, top: 20.0, left: 28.0),
+          /*child: Text(
             'Hi User',
             style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
-          ),
+          ),*/
         ),
         Padding(
-          padding: EdgeInsets.only(right: 15.0, top: 10.0, left: 15.0),
+          padding: EdgeInsets.only(right: 15.0, top: 10.0, left: 28.0),
           child: Text(
             'Explore Notes',
-            style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontSize: 20.0,
+                fontFamily: 'RobotoMono',
+                fontWeight: FontWeight.bold),
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-          child: SearchBar()),
-
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Column(
-              children: [
-                Row(
-                  children: <Widget>[
-                    CourseCard(
-                        'Notes.png', 'Computer Architecture', 'Prof XYZ'),
-                    CourseCard('Sheets.png', 'Operating System', 'Prof XYZ'),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    CourseCard(
-                        'Notes.png', 'Computer Architecture', 'Prof XYZ'),
-                    CourseCard('Sheets.png', 'Operating System', 'Prof XYZ'),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    CourseCard(
-                        'Notes.png', 'Computer Architecture', 'Prof XYZ'),
-                  ],
-                ),
-              ],
-            ),
+            padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+            child: SearchBar()),
+        Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              Row(
+                children: <Widget>[
+                  CourseCard('Notes.png', 'Computer Architecture', 'Prof XYZ'),
+                  CourseCard('Sheets.png', 'Operating System', 'Prof XYZ'),
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  CourseCard('Notes.png', 'Computer Architecture', 'Prof XYZ'),
+                  CourseCard('Sheets.png', 'Operating System', 'Prof XYZ'),
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  CourseCard('Notes.png', 'Computer Architecture', 'Prof XYZ'),
+                ],
+              ),
+            ],
           ),
+        ),
       ],
     ));
   }
@@ -84,8 +84,9 @@ class CourseCard extends StatelessWidget {
             ),
             boxShadow: [
               new BoxShadow(
-                color: Color(0xffe2e2e2),
-                blurRadius: 6.0,
+                offset: Offset(0, 15),
+                color: Color(0xff666666).withOpacity(.11),
+                blurRadius: 30.0,
               ),
             ],
           ),
@@ -235,7 +236,6 @@ class HorizontalCard extends StatelessWidget {
   }
 }
 
-
 class SearchBar extends StatefulWidget {
   @override
   _SearchBarState createState() => _SearchBarState();
@@ -244,32 +244,36 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
-   return AnimatedContainer(
+    return AnimatedContainer(
       duration: Duration(milliseconds: 400),
       width: 50.0,
       height: 56,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(32),
         color: Colors.white,
-        boxShadow: kElevationToShadow[6],
+        boxShadow: [
+          new BoxShadow(
+            offset: Offset(0, 15),
+            color: Color(0xff666666).withOpacity(.11),
+            blurRadius: 30.0,
+          ),
+        ],
       ),
       child: Row(
         children: [
           Expanded(
             child: Container(
               padding: EdgeInsets.only(left: 16),
-              child: 
-                   TextField(
-                      decoration: InputDecoration(
-                          hintText: 'Search',
-                          hintStyle: TextStyle(color: Colors.grey),
-                          border: InputBorder.none),
-                    )
-                  ,
+              child: TextField(
+                decoration: InputDecoration(
+                    hintText: 'Search',
+                    hintStyle:
+                        TextStyle(color: Colors.grey, fontFamily: 'RobotoMono'),
+                    border: InputBorder.none),
+              ),
             ),
           ),
           Container(
-            
             child: Material(
               type: MaterialType.transparency,
               child: InkWell(
@@ -280,13 +284,11 @@ class _SearchBarState extends State<SearchBar> {
                   bottomRight: Radius.circular(32),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: InkWell(
-                    child: Icon(Icons.search),
-                    onTap: (){},
-                  )
-                ),
-                
+                    padding: const EdgeInsets.all(16.0),
+                    child: InkWell(
+                      child: Icon(Icons.search),
+                      onTap: () {},
+                    )),
               ),
             ),
           )
