@@ -247,10 +247,11 @@ class HorizontalCard extends StatelessWidget {
                     Flexible(
                       child: Container(
                         child: Text(
-                          "By Prof. $profName",
+                          "By Prof.$profName",
                           style: TextStyle(
-                              fontSize: screenSize > 700 ? 15.0 : 13,
+                              fontSize: screenSize > 700 ? 18.0 : 15,
                               fontFamily: 'RobotoMono',
+                              color: Colors.grey,
                               fontWeight: FontWeight.w700),
                         ),
                       ),
@@ -270,6 +271,7 @@ class HorizontalCard extends StatelessWidget {
                   bottomRight: Radius.circular(30.0),
                 ),
                 //color: Colors.red,
+                //color: Color(0xFF619b8a).withOpacity(0.11),
                 image: DecorationImage(
                     image: AssetImage('images/$imgpPath'), fit: BoxFit.cover),
               ),
@@ -281,7 +283,8 @@ class HorizontalCard extends StatelessWidget {
             : MediaQuery.of(context).size.height * 0.22,
         width: MediaQuery.of(context).size.width * 0.9,
         decoration: BoxDecoration(
-          color: Color(0xfffbfcfc),
+          //color: Color(0xfffbfcfc),
+          color: Color(0xFF619b8a).withOpacity(0.11),
           //color: Colors.grey[200],
           borderRadius: BorderRadius.all(
             Radius.circular(30.0),
@@ -311,8 +314,7 @@ class CourseCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(
-              builder: (context) => ChaptersPage(imgPath, courseName)),
+          MaterialPageRoute(builder: (context) => ChaptersPage(courseName)),
         );
       },
       child: Padding(
@@ -373,6 +375,7 @@ class CourseCard extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 15.0,
                         fontFamily: 'RobotoMono',
+                        color: Colors.grey,
                         fontWeight: FontWeight.bold),
                   ),
                 ),

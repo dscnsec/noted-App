@@ -34,19 +34,24 @@ class Searchpage extends StatelessWidget {
             children: [
               Row(
                 children: <Widget>[
-                  CourseCard('Notes.png', 'Computer Architecture', 'Prof XYZ'),
-                  CourseCard('Sheets.png', 'Operating System', 'Prof XYZ'),
+                  CourseCard('Notes.png', 'Computer Architecture', 'Prof XYZ',
+                      '4th Semester'),
+                  CourseCard('Sheets.png', 'Operating System', 'Prof XYZ',
+                      '4th Semester'),
                 ],
               ),
               Row(
                 children: <Widget>[
-                  CourseCard('Notes.png', 'Computer Architecture', 'Prof XYZ'),
-                  CourseCard('Sheets.png', 'Operating System', 'Prof XYZ'),
+                  CourseCard('Notes.png', 'Computer Architecture', 'Prof XYZ',
+                      '4th Semester'),
+                  CourseCard('Sheets.png', 'Operating System', 'Prof XYZ',
+                      '4th Semester'),
                 ],
               ),
               Row(
                 children: <Widget>[
-                  CourseCard('Notes.png', 'Computer Architecture', 'Prof XYZ'),
+                  CourseCard('Notes.png', 'Computer Architecture', 'Prof XYZ',
+                      '4th Semester'),
                 ],
               ),
             ],
@@ -61,8 +66,9 @@ class CourseCard extends StatelessWidget {
   final String imgPath;
   final String courseName;
   final String teacher;
+  final String semester;
 
-  CourseCard(this.imgPath, this.courseName, this.teacher);
+  CourseCard(this.imgPath, this.courseName, this.teacher, this.semester);
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -77,7 +83,8 @@ class CourseCard extends StatelessWidget {
         padding: EdgeInsets.all(5.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Color(0xfffbfcfc),
+            //color: Color(0xfffbfcfc),
+            color: Color(0xFF619b8a).withOpacity(0.11),
             //color: Colors.grey[200],
             borderRadius: BorderRadius.all(
               Radius.circular(30.0),
@@ -90,7 +97,7 @@ class CourseCard extends StatelessWidget {
               ),
             ],
           ),
-          height: MediaQuery.of(context).size.height * 0.3,
+          height: MediaQuery.of(context).size.height * 0.2,
           width: MediaQuery.of(context).size.width * 0.45,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
@@ -111,18 +118,45 @@ class CourseCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: 0.0),
-                  //padding: EdgeInsets.only(top: 0.0),
-                  child: Text(
-                    teacher,
-                    style: TextStyle(
-                        fontSize: 15.0,
-                        fontFamily: 'RobotoMono',
-                        fontWeight: FontWeight.bold),
-                  ),
+                Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 0.0),
+                          //padding: EdgeInsets.only(top: 0.0),
+                          child: Text(
+                            teacher,
+                            style: TextStyle(
+                              fontSize: 17.0,
+                              fontFamily: 'RobotoMono',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Padding(
+                          //padding: EdgeInsets.only(left: 0.0),
+                          padding: EdgeInsets.only(top: 0.9),
+                          child: Text(
+                            semester,
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontFamily: 'RobotoMono',
+                              //fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                Padding(
+                /*Padding(
                   padding: EdgeInsets.only(top: 0.0),
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.12,
@@ -133,7 +167,7 @@ class CourseCard extends StatelessWidget {
                           fit: BoxFit.cover),
                     ),
                   ),
-                ),
+                ),*/
               ],
             ),
           ),
@@ -167,8 +201,7 @@ class HorizontalCard extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment
-                      .spaceEvenly, // PLAY AROUND WITH THIS, MAYBE CHANGE SPACEeVENLY TO SPACEbETWEEN XDXDXD the ROASSST
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly, //
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Flexible(

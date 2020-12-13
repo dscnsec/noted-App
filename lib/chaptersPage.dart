@@ -11,9 +11,9 @@ import './search_page.dart';
 
 class ChaptersPage extends StatefulWidget {
   final String subjName;
-  final String imgPath;
+  //final String imgPath;
 
-  const ChaptersPage(this.imgPath, this.subjName);
+  const ChaptersPage(this.subjName);
   @override
   _ChaptersPageState createState() => _ChaptersPageState();
 }
@@ -21,50 +21,212 @@ class ChaptersPage extends StatefulWidget {
 class _ChaptersPageState extends State<ChaptersPage> {
   @override
   Widget build(BuildContext context) {
-    String imagePath = widget.imgPath;
+    var size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color(0xfffbfcfc),
-      body: ListView(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(
-              left: 28.0,
-              right: 10.0,
-              bottom: 10.0,
-              top: 20.0,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Stack(
+              alignment: Alignment.topCenter,
               children: <Widget>[
-                Text(
-                  widget.subjName,
-                  style: TextStyle(
-                      fontSize: 20.0,
-                      fontFamily: 'RobotoMono',
-                      fontWeight: FontWeight.bold),
+                Container(
+                  height: size.height * .39,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Color(0xFF619b8a).withOpacity(.11),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(50),
+                      bottomRight: Radius.circular(50),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: size.height * .05),
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                  left: 18.0,
+                                  right: 0.0,
+                                  bottom: 0.0,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      "Data Structures",
+                                      style: TextStyle(
+                                          fontSize: 25.0,
+                                          fontFamily: 'RobotoMono',
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Row(
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: Column(
+                                            children: <Widget>[
+                                              Text(
+                                                "Chapters",
+                                                style: TextStyle(
+                                                    fontSize: 20.0,
+                                                    fontFamily: 'RobotoMono',
+                                                    color: Colors.grey,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          children: <Widget>[
+                                            IconButton(
+                                              icon: Icon(Icons.favorite_border),
+                                              onPressed: () {},
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Image.asset(
+                              "images/Chapter.png",
+                              height: 230,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                IconButton(
-                  icon: Icon(Icons.favorite),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        PageTransition(
-                            type: PageTransitionType.rightToLeft,
-                            child: ViewallPage()));
-                  },
-                )
+                Padding(
+                  padding: EdgeInsets.only(top: size.height * .4 - 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      ChapterCard(
+                        name: "Name",
+                        chapterNumber: 1,
+                        tag: "Some more chapter details",
+                        press: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.rightToLeft,
+                                  child: NotePage('Data Structures')));
+                        },
+                      ),
+                      ChapterCard(
+                        name: "Name",
+                        chapterNumber: 2,
+                        tag: "Some more chapter details",
+                        press: () {},
+                      ),
+                      ChapterCard(
+                        name: "Name",
+                        chapterNumber: 3,
+                        tag: "Some more chapter details",
+                        press: () {},
+                      ),
+                      ChapterCard(
+                        name: "Name",
+                        chapterNumber: 4,
+                        tag: "Some more chapter details",
+                        press: () {},
+                      ),
+                      ChapterCard(
+                        name: "Name",
+                        chapterNumber: 5,
+                        tag: "Some more chapter details",
+                        press: () {},
+                      ),
+                      SizedBox(height: 10),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            //chapter cards
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ChapterCard extends StatelessWidget {
+  final String name;
+  final String tag;
+  final int chapterNumber;
+  final Function press;
+  const ChapterCard({
+    Key key,
+    this.name,
+    this.tag,
+    this.press,
+    this.chapterNumber,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+      margin: EdgeInsets.only(bottom: 16),
+      width: size.width - 48,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(38.5),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 10),
+            blurRadius: 33,
+            color: Color(0xffD3D3D3).withOpacity(.84),
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "Chapter $chapterNumber: $name \n",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                    fontFamily: "RobotoMono",
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextSpan(
+                  text: tag,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                    fontFamily: "RobotoMono",
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
           ),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Column(
-              children: <Widget>[
-                HorizontalCard('Chapter Name', 'profName', 'Openbook_.png'),
-                HorizontalCard('Chapter Name', 'profName', 'Openbook_.png'),
-              ],
+          Spacer(),
+          IconButton(
+            icon: Icon(
+              Icons.arrow_forward_ios,
+              size: 18,
             ),
-          ),
+            onPressed: press,
+          )
         ],
       ),
     );
