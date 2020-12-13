@@ -99,10 +99,24 @@ class _SearchPageState extends State<SearchPage> {
             padding: EdgeInsets.all(10.0),
             child: Column(
               children: <Widget>[
-                HorizontalCard('Computer is bad for computers', 'profName',
+                HorizontalCard(
+                    'Advanced Java Programming', 'Uttam K. Roy',
                     'Openbook_.png'),
-                HorizontalCard('Computer is bad for computers', 'profName',
+                HorizontalCard(
+                    'Design and Analysis of Algorithms', 'A.A.Puntambekar',
                     'Openbook_.png'),
+                HorizontalCard(
+                    'Cyber Security', 'Simon Singh', 'Book.png'),
+                HorizontalCard(
+                    'Software Engineering', 'DSC', 'Book.png'),
+                HorizontalCard(
+                    'Operating Systems', 'Greg Gagne', 'Openbook_.png'),
+                HorizontalCard('Computer Networks',
+                    'Andrew S. Tanenbaum', 'Notes.png'),
+                HorizontalCard('Object Oriented Programming Languuage',
+                    'E Balagurusamy', 'Openbook_.png'),
+
+
               ],
             ),
           ),
@@ -204,3 +218,5 @@ class HorizontalCard extends StatelessWidget {
     );
   }
 }
+
+

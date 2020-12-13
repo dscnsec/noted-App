@@ -15,8 +15,11 @@ class _ViewMorePageState extends State<ViewMorePage> {
 
     return Scaffold(
       backgroundColor: Color(0xfffbfcfc),
+
       body: ListView(
         children: <Widget>[
+          //added
+
           //Did i just comment out the entire pseudo app bar? yes :O
           /*Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
@@ -95,23 +98,39 @@ class _ViewMorePageState extends State<ViewMorePage> {
                     Row(
                       children: [
                         CourseCard(
-                            'Notes.png', 'Computer Architecture', 'Prof. XYZ'),
+                            'Notes.png', 'Data  Structures And Algorithms', 'GAV PAI'),
+
                         CourseCard(
-                            'Notes.png', 'Operating System', 'Prof. XYZ'),
+                            'Notes.png', 'Object Oriented Programming Languuage', 'E Balagurusamy'),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                       CourseCard(
+                           'Notes.png','Mobile Platform Programming', 'Steve McConnell'),
+                        CourseCard(
+                            'Book.png','Cyber Security', 'Simon Singh'),
                       ],
                     ),
                     Row(
                       children: [
                         CourseCard(
-                            'Sheets.png', 'Computer Architecture', 'Prof. XYZ'),
+                         'Book.png', 'Multi-device Programming', 'Andrew S. Tanenbaum'),
                         CourseCard(
-                            'Sheets.png', 'Operating System', 'Prof. XYZ'),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        CourseCard(
-                            'Sheets.png', 'Computer Architecture', 'Prof. XYZ'),
+                          'Notes.png',  'Advanced Java Programming', 'Uttam K. Roy'),
+                        Row(
+                          children: [
+                            CourseCard(
+                            'Openbook_.png' ,'Operating Systems', 'Greg Gagne'),
+
+                            Row(
+                              children: [
+                                CourseCard(
+                                    'Sheet.png' ,'Computer Architecture and Organisation', 'William Stallings', ),
+                              ],
+                            )
+                          ],
+                        )
                       ],
                     ),
                   ],

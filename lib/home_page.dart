@@ -1,6 +1,18 @@
 import 'dart:wasm';
 
 import 'package:flutter/material.dart';
+import 'package:noted/aj.dart';
+import 'package:noted/ca.dart';
+import 'package:noted/cs.dart';
+import 'package:noted/csn.dart';
+import 'package:noted/da.dart';
+import 'package:noted/dm.dart';
+import 'package:noted/dq.dart';
+import 'package:noted/dsa.dart';
+import 'package:noted/md.dart';
+import 'package:noted/mpp.dart';
+import 'package:noted/os.dart';
+import 'package:noted/se.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './search_page.dart';
@@ -14,6 +26,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Scaffold(
           backgroundColor: Color(0xFF619b8a),
@@ -25,6 +38,7 @@ class _HomePageState extends State<HomePage> {
                   minRadius: 25.0,
                   backgroundColor: Colors.white,
                 ),
+
               )
             ],
             title: Text(
@@ -43,12 +57,21 @@ class _HomePageState extends State<HomePage> {
               // Important: Remove any padding from the ListView.
               padding: EdgeInsets.zero,
               children: <Widget>[
-                DrawerHeader(
-                  child: Text('Drawer Header'),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF619b8a),
+                new UserAccountsDrawerHeader(accountName: new Text("DSCNESC"),
+                  accountEmail: new Text("dscnsecorg@gmail.com"),
+                  currentAccountPicture: new CircleAvatar(
+                    backgroundColor:  Colors.white,
+                    child: new Text("R"),
                   ),
+                  otherAccountsPictures: <Widget>[
+                    new CircleAvatar(
+                      backgroundColor:  Colors.white,
+                      child: new Text("D"),
+                    )
+                  ],
+
                 ),
+
                 ListTile(
                   title: Text(
                     'Search',
@@ -62,6 +85,12 @@ class _HomePageState extends State<HomePage> {
                     // ...
                     Navigator.pop(context);
                   },
+                ),
+                new Divider(),
+                new ListTile(
+                  title: new Text("Close"),
+                  trailing: new Icon(Icons.close),
+                  onTap: ()=> Navigator.of(context).pop(),
                 ),
                 ListTile(
                   title: Text(
@@ -79,6 +108,8 @@ class _HomePageState extends State<HomePage> {
                         PageTransition(
                             type: PageTransitionType.leftToRight,
                             child: SearchPage()));
+
+
                   },
                 ),
               ],
@@ -171,40 +202,183 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: <Widget>[
-                              CourseCard('Notes.png', 'Computer Architecture',
-                                  'Prof. XYZ'),
-                              CourseCard('Sheets.png', 'Operating System',
-                                  'Prof. XYZ'),
-                              CourseCard(
-                                  'Notes.png', 'Machine Learning', 'Prof. XYZ'),
-                            ],
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 28.0, vertical: 10.0),
-                          child: Text(
-                            'More to learn',
-                            style: TextStyle(
-                                //fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                                fontFamily: 'RobotoMono',
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
+
                         Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: 20.0, vertical: 10.0),
                           child: Column(
                             children: <Widget>[
-                              HorizontalCard('Machine Learning',
-                                  'John Kumar Doe', 'Book.png'),
-                              HorizontalCard('Data Structures and Algorithm',
-                                  'John Das Doe', 'Openbook_.png'),
-                              HorizontalCard('Computer Architecture',
-                                  'John Doe', 'Book.png'),
+
+                              HorizontalCard('Data  Structures And Algorithms',
+                                  'GAV PAI', 'Book.png'),
+                              IconButton(
+                                  icon: Icon(Icons.arrow_forward_ios),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            type: PageTransitionType.rightToLeftWithFade,
+                                            child: dsa()));
+                                  }),
+
+                              HorizontalCard('Object Oriented Programming Languuage',
+                                  'E Balagurusamy', 'Openbook_.png'),
+                              IconButton(
+                                  icon: Icon(Icons.arrow_forward_ios),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            type: PageTransitionType.rightToLeftWithFade,
+                                            child: dq()));
+                                  }),
+
+                              HorizontalCard('Computer Networks',
+                                  'Andrew S. Tanenbaum', 'Notes.png'),
+                              IconButton(
+                                  icon: Icon(Icons.arrow_forward_ios),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            type: PageTransitionType.rightToLeftWithFade,
+                                            child: csn()));
+                                  }),
+
+                              HorizontalCard(
+                                  'Software Engineering', 'DSC', 'Book.png'),
+                              IconButton(
+                                  icon: Icon(Icons.arrow_forward_ios),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            type: PageTransitionType.rightToLeftWithFade,
+                                            child: se()));
+                                  }),
+
+
+                              HorizontalCard(
+     'Design and Analysis of Algorithms', 'A.A.Puntambekar', 'Book.png'),
+                             IconButton(
+                               icon: Icon(Icons.arrow_forward_ios),
+                                onPressed: () {
+                                Navigator.pop(context);
+                                  Navigator.push(
+                                     context,
+                                  PageTransition(
+                                     type: PageTransitionType.rightToLeftWithFade,
+                                        child: da()));
+                                }),
+
+
+                              HorizontalCard(
+                                  'Computer Architecture and Organisation', 'William Stallings', 'Book.png'),
+                              IconButton(
+                                  icon: Icon(Icons.arrow_forward_ios),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            type: PageTransitionType.rightToLeftWithFade,
+                                            child: ca()));
+                                  }),
+                              HorizontalCard(
+                                  'Database Management Systems', 'Johannes Gehrke', 'Notes.png'),
+                              IconButton(
+                                  icon: Icon(Icons.arrow_forward_ios),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            type: PageTransitionType.rightToLeftWithFade,
+                                            child: dm()));
+                                  }),
+                              HorizontalCard(
+                                  'Operating Systems', 'Greg Gagne', 'Openbook_.png'),
+                              IconButton(
+                                  icon: Icon(Icons.arrow_forward_ios),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            type: PageTransitionType.rightToLeftWithFade,
+                                            child: os()));
+                                  }),
+                              HorizontalCard(
+                                  'Advanced Java Programming', 'Uttam K. Roy', 'Notes.png'),
+                              IconButton(
+                                  icon: Icon(Icons.arrow_forward_ios),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            type: PageTransitionType.rightToLeftWithFade,
+                                            child: aj()));
+                                  }),
+                              HorizontalCard(
+                                  'Multi-device Programming', 'Andrew S. Tanenbaum', 'Book.png'),
+                              IconButton(
+                                  icon: Icon(Icons.arrow_forward_ios),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            type: PageTransitionType.rightToLeftWithFade,
+                                            child: md()));
+                                  }),
+                              HorizontalCard('Cyber Security', 'Simon Singh', 'Book.png'),
+                              IconButton(
+                                  icon: Icon(Icons.arrow_forward_ios),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            type: PageTransitionType.rightToLeftWithFade,
+                                            child: cs()));
+                                  }),
+                              
+                              HorizontalCard('Mobile Platform Programming', ' Steve McConnell', 'Note.png'),
+                              IconButton(
+                                  icon: Icon(Icons.arrow_forward_ios),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        PageTransition(
+                                            type: PageTransitionType.rightToLeftWithFade,
+                                            child: mpp()));
+                                  }),
+
+
+
+
+
+                              Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 28.0, vertical: 10.0),
+                                child: Text(
+                                  'More to learn',
+                                  style: TextStyle(
+                                    //fontWeight: FontWeight.bold,
+                                      fontSize: 20.0,
+                                      fontFamily: 'RobotoMono',
+                                      fontWeight: FontWeight.bold),
+
+
+                                ),
+                              ),
                             ],
                           ),
                         ),
