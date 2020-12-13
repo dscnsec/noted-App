@@ -4,9 +4,9 @@ import './chaptersPage.dart';
 
 class NotePage extends StatefulWidget {
   final String subjName;
-  //final String imgPath;
+  final String imgPath;
 
-  const NotePage(this.subjName);
+  const NotePage(this.imgPath, this.subjName);
   @override
   _NotePageState createState() => _NotePageState();
 }
@@ -14,7 +14,7 @@ class NotePage extends StatefulWidget {
 class _NotePageState extends State<NotePage> {
   @override
   Widget build(BuildContext context) {
-    //String imagePath = widget.imgPath;
+    String imagePath = widget.imgPath;
     return Scaffold(
       backgroundColor: Color(0xFF29998C),
       body: ListView(

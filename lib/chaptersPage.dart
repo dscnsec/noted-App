@@ -34,7 +34,7 @@ class _ChaptersPageState extends State<ChaptersPage> {
                   height: size.height * .39,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Color(0xFF619b8a).withOpacity(.11),
+                    color: Color(0xFF619b8a).withOpacity(.22),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(50),
                       bottomRight: Radius.circular(50),
@@ -116,35 +116,64 @@ class _ChaptersPageState extends State<ChaptersPage> {
                         tag: "Some more chapter details",
                         press: () {
                           Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.rightToLeft,
-                                  child: NotePage('Data Structures')));
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NotePage(
+                                    'images', 'Computer Architecture')),
+                          );
                         },
                       ),
                       ChapterCard(
                         name: "Name",
                         chapterNumber: 2,
                         tag: "Some more chapter details",
-                        press: () {},
+                        press: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NotePage(
+                                    'images', 'Computer Architecture')),
+                          );
+                        },
                       ),
                       ChapterCard(
                         name: "Name",
                         chapterNumber: 3,
                         tag: "Some more chapter details",
-                        press: () {},
+                        press: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NotePage(
+                                    'images', 'Computer Architecture')),
+                          );
+                        },
                       ),
                       ChapterCard(
                         name: "Name",
                         chapterNumber: 4,
                         tag: "Some more chapter details",
-                        press: () {},
+                        press: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NotePage(
+                                    'images', 'Computer Architecture')),
+                          );
+                        },
                       ),
                       ChapterCard(
                         name: "Name",
                         chapterNumber: 5,
                         tag: "Some more chapter details",
-                        press: () {},
+                        press: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NotePage(
+                                    'images', 'Computer Architecture')),
+                          );
+                        },
                       ),
                       SizedBox(height: 10),
                     ],
