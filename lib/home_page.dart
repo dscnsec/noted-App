@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Color(0xFF619b8a),
+          backgroundColor: Color(0xFFd8e5e1),
           appBar: AppBar(
             actions: <Widget>[
               Padding(
@@ -35,12 +35,13 @@ class _HomePageState extends State<HomePage> {
               'noted',
               style: TextStyle(
                   fontSize: 38.0,
+                  color: Colors.black45,
                   fontFamily: 'timesnewroman',
                   fontWeight: FontWeight.bold),
             ),
             centerTitle: true,
             elevation: 0,
-            backgroundColor: Color(0xFF619b8a),
+            backgroundColor: Color(0xFFd8e5e1),
           ),
           drawer: Drawer(
             child: ListView(

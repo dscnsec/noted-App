@@ -70,9 +70,9 @@ class _ChaptersPageState extends State<ChaptersPage> {
                                           child: Column(
                                             children: <Widget>[
                                               Text(
-                                                "Chapters",
+                                                "All Chapters",
                                                 style: TextStyle(
-                                                    fontSize: 20.0,
+                                                    fontSize: 14.0,
                                                     fontFamily: 'RobotoMono',
                                                     color: Colors.grey,
                                                     fontWeight:
@@ -96,7 +96,7 @@ class _ChaptersPageState extends State<ChaptersPage> {
                               ),
                             ),
                             Image.asset(
-                              "images/Chapter.png",
+                              "images/Chapteralt_.png",
                               height: 230,
                             ),
                           ],
