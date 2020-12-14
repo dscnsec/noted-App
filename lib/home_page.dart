@@ -1,5 +1,6 @@
 import 'dart:wasm';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:noted/aj.dart';
 import 'package:noted/ca.dart';
@@ -19,7 +20,7 @@ import './syllabusPage.dart';
 import './viewallPage.dart';
 import './notePage.dart';
 import './search_page.dart';
-import './viewmore.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -84,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w500),
                   ),
                   onTap: () {
-                      Navigator.pop(context);
+                    Navigator.pop(context);
 
                     Navigator.push(
                         context,
@@ -108,7 +109,6 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                         context,
                         PageTransition(
-                            type: PageTransitionType.leftToRight,
                             child: SyllabusPage()));
                     new Divider();
                     new ListTile(
@@ -121,6 +121,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+
           body: ListView(
             children: <Widget>[
               Padding(
@@ -141,15 +142,16 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold),
                     ),
                     IconButton(
-                        icon: Icon(Icons.arrow_forward_ios),
-                        onPressed: () {
-                          Navigator.pop(context);
-                          Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.rightToLeftWithFade,
-                                  child: ViewMorePage()));
-                        })
+
+                      icon: Icon(Icons.arrow_forward_ios),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.rightToLeft,
+                                child: ViewallPage()));
+                      },
+                    )
                   ],
                 ),
               ),
@@ -180,35 +182,8 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
-                      child: Row(
-                            children: <Widget>[
-                              CourseCard('Notes.png', 'Computer Architecture',
-                                  'Prof XYZ'),
-                              CourseCard(
-                                  'Sheets.png', 'Operating System', 'Prof XYZ'),
-                              CourseCard(
-                                  'Sheets.png', 'Machine Learning', 'Prof XYZ'),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 28.0, vertical: 10.0),
-                          child: Text(
-                            'More to learn',
-                            style: TextStyle(
-                                //fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                                fontFamily: 'RobotoMono',
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 10.0),
-                          child: Column(
-                            children: <Widget>[
+                            child: Row(
+                              children: <Widget>[
 
                               HorizontalCard('Data  Structures And Algorithms',
                                   'GAV PAI', 'Book.png'),
@@ -348,7 +323,7 @@ class _HomePageState extends State<HomePage> {
                                             type: PageTransitionType.rightToLeftWithFade,
                                             child: cs()));
                                   }),
-                              
+
                               HorizontalCard('Mobile Platform Programming', ' Steve McConnell', 'Note.png'),
                               IconButton(
                                   icon: Icon(Icons.arrow_forward_ios),
@@ -360,35 +335,29 @@ class _HomePageState extends State<HomePage> {
                                             type: PageTransitionType.rightToLeftWithFade,
                                             child: mpp()));
                                   }),
-
-
-
-
-
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 28.0, vertical: 10.0),
-                                child: Text(
-                                  'More to learn',
-                                  style: TextStyle(
-                                    //fontWeight: FontWeight.bold,
-                                      fontSize: 20.0,
-                                      fontFamily: 'RobotoMono',
-                                      fontWeight: FontWeight.bold),
-
-
-                                ),
-                              ),
-                            ],
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 28.0, vertical: 10.0),
+                            child: Text(
+                                'More to learn',
+                                style: TextStyle(
+                                  //fontWeight: FontWeight.bold,
+                                    fontSize: 20.0,
+                                    fontFamily: 'RobotoMono',
+                                    fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                              ],
                           ),
-                        ),
-                      ],
-                    ),
+                            )
+                        ],
                   ),
+    ),
                 ],
               )
-            ],
-          )),
+    ],
+                  )),
+
     );
   }
 }
@@ -434,10 +403,11 @@ class HorizontalCard extends StatelessWidget {
                     Flexible(
                       child: Container(
                         child: Text(
-                          "By Prof. $profName",
+                          "By Prof.$profName",
                           style: TextStyle(
-                              fontSize: screenSize > 700 ? 15.0 : 13,
+                              fontSize: screenSize > 700 ? 18.0 : 15,
                               fontFamily: 'RobotoMono',
+                              color: Colors.grey,
                               fontWeight: FontWeight.w700),
                         ),
                       ),
@@ -457,6 +427,7 @@ class HorizontalCard extends StatelessWidget {
                   bottomRight: Radius.circular(30.0),
                 ),
                 //color: Colors.red,
+                //color: Color(0xFF619b8a).withOpacity(0.11),
                 image: DecorationImage(
                     image: AssetImage('images/$imgpPath'), fit: BoxFit.cover),
               ),
@@ -468,15 +439,17 @@ class HorizontalCard extends StatelessWidget {
             : MediaQuery.of(context).size.height * 0.22,
         width: MediaQuery.of(context).size.width * 0.9,
         decoration: BoxDecoration(
-          color: Color(0xfffbfcfc),
+          //color: Color(0xfffbfcfc),
+          color: Color(0xFF619b8a).withOpacity(0.11),
           //color: Colors.grey[200],
           borderRadius: BorderRadius.all(
             Radius.circular(30.0),
           ),
           boxShadow: [
             new BoxShadow(
-              color: Color(0xffe2e2e2),
-              blurRadius: 6.0,
+              offset: Offset(0, 15),
+              color: Color(0xff666666).withOpacity(.11),
+              blurRadius: 30.0,
             ),
           ],
         ),
@@ -494,26 +467,28 @@ class CourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      child: Padding(
-        padding: EdgeInsets.all(15.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Color(0xfffbfcfc),
-            //color: Colors.grey[200],
-            borderRadius: BorderRadius.all(
-              Radius.circular(30.0),
-            ),
-            boxShadow: [
-              new BoxShadow(
-                color: Color(0xffe2e2e2),
-                blurRadius: 6.0,
-              ),
-            ],
+      padding: EdgeInsets.all(10.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Color(0xfffbfcfc),
+          //color: Colors.grey[200],
+          borderRadius: BorderRadius.all(
+            Radius.circular(30.0),
           ),
-          height: MediaQuery.of(context).size.height * 0.3,
+          boxShadow: [
+            new BoxShadow(
+              color: Color(0xffe2e2e2),
+              blurRadius: 6.0,
+        ),
+      ],
+        ),
+
+           height: MediaQuery.of(context).size.height * 0.35,
+   
           width: MediaQuery.of(context).size.width * 0.45,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+            padding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+            //20 15
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -557,6 +532,44 @@ class CourseCard extends StatelessWidget {
               ],
             ),
           ),
+      ),
+    );
+  }
+}
+
+
+class TwoSideRoundedButton extends StatelessWidget {
+  final String text;
+  //final double radius;
+  final Function press;
+  const TwoSideRoundedButton({
+    Key key,
+    this.text,
+    //this.radius,
+    this.press,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: press,
+      child: Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: Color(0xFF619b8a),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            bottomRight: Radius.circular(30),
+          ),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 12.0,
+              fontFamily: 'RobotoMono',
+              fontWeight: FontWeight.bold),
         ),
       ),
     );
