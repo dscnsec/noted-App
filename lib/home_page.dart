@@ -15,6 +15,9 @@ import 'package:noted/os.dart';
 import 'package:noted/se.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import './syllabusPage.dart';
+import './viewallPage.dart';
+import './notePage.dart';
 import './search_page.dart';
 import './viewmore.dart';
 
@@ -61,12 +64,12 @@ class _HomePageState extends State<HomePage> {
                   accountEmail: new Text("dscnsecorg@gmail.com"),
                   currentAccountPicture: new CircleAvatar(
                     backgroundColor:  Colors.white,
-                    child: new Text("R"),
+                    child: new Text("D"),
                   ),
                   otherAccountsPictures: <Widget>[
                     new CircleAvatar(
                       backgroundColor:  Colors.white,
-                      child: new Text("D"),
+                      child: new Text("R"),
                     )
                   ],
 
@@ -81,17 +84,16 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.w500),
                   ),
                   onTap: () {
-                    // Update the state of the app.
-                    // ...
-                    Navigator.pop(context);
+                      Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: Searchpage()));
                   },
                 ),
-                new Divider(),
-                new ListTile(
-                  title: new Text("Close"),
-                  trailing: new Icon(Icons.close),
-                  onTap: ()=> Navigator.of(context).pop(),
-                ),
+
                 ListTile(
                   title: Text(
                     'Syllabus',
@@ -107,48 +109,24 @@ class _HomePageState extends State<HomePage> {
                         context,
                         PageTransition(
                             type: PageTransitionType.leftToRight,
-                            child: SearchPage()));
-
-
+                            child: SyllabusPage()));
+                    new Divider();
+                    new ListTile(
+                    title: new Text("Close"),
+                    trailing: new Icon(Icons.close),
+                    onTap: ()=> Navigator.of(context).pop(),
+                    );
                   },
                 ),
               ],
             ),
           ),
-          //my wasteful (useful) attempt at drawer no.1
-
           body: ListView(
             children: <Widget>[
-              //Did i just comment out the entire pseudo app bar? yes :O
-              /*Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    IconButton(
-                        icon: Icon(Icons.menu),
-                        onPressed: () {
-                          //_scaffoldState.currentState.openDrawer();
-                          //Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: ExplorePage()));
-                        }),
-                    Text(
-                      'noted',
-                      style: TextStyle(
-                        fontSize: 45.0,
-                        fontFamily: 'timesnewroman',
-                      ),
-                    ),
-                    CircleAvatar(
-                      minRadius: 25.0,
-                      backgroundColor: Color(0xfffbfcfc),
-                    )
-                  ],
-                ),
-              ),*/
               Padding(
                 padding: EdgeInsets.only(
                   left: 28.0,
-                  right: 28.0,
+                  right: 10.0,
                   bottom: 10.0,
                   top: 20.0,
                 ),
@@ -202,7 +180,29 @@ class _HomePageState extends State<HomePage> {
                       children: <Widget>[
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
+                      child: Row(
+                            children: <Widget>[
+                              CourseCard('Notes.png', 'Computer Architecture',
+                                  'Prof XYZ'),
+                              CourseCard(
+                                  'Sheets.png', 'Operating System', 'Prof XYZ'),
+                              CourseCard(
+                                  'Sheets.png', 'Machine Learning', 'Prof XYZ'),
+                            ],
                           ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 28.0, vertical: 10.0),
+                          child: Text(
+                            'More to learn',
+                            style: TextStyle(
+                                //fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                                fontFamily: 'RobotoMono',
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
 
                         Padding(
                           padding: EdgeInsets.symmetric(
@@ -417,8 +417,7 @@ class HorizontalCard extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment
-                      .spaceEvenly, // PLAY AROUND WITH THIS, MAYBE CHANGE SPACEeVENLY TO SPACEbETWEEN XDXDXD the ROASSST
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Flexible(
@@ -495,66 +494,68 @@ class CourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Color(0xfffbfcfc),
-          //color: Colors.grey[200],
-          borderRadius: BorderRadius.all(
-            Radius.circular(30.0),
-          ),
-          boxShadow: [
-            new BoxShadow(
-              color: Color(0xffe2e2e2),
-              blurRadius: 6.0,
+      child: Padding(
+        padding: EdgeInsets.all(15.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Color(0xfffbfcfc),
+            //color: Colors.grey[200],
+            borderRadius: BorderRadius.all(
+              Radius.circular(30.0),
             ),
-          ],
-        ),
-        height: MediaQuery.of(context).size.height * 0.3,
-        width: MediaQuery.of(context).size.width * 0.45,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Flexible(
-                child: Padding(
+            boxShadow: [
+              new BoxShadow(
+                color: Color(0xffe2e2e2),
+                blurRadius: 6.0,
+              ),
+            ],
+          ),
+          height: MediaQuery.of(context).size.height * 0.3,
+          width: MediaQuery.of(context).size.width * 0.45,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 0.0),
+                    //padding: EdgeInsets.only(top: 10.0),
+                    child: Text(
+                      courseName,
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          fontFamily: 'RobotoMono',
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Padding(
                   padding: EdgeInsets.only(left: 0.0),
-                  //padding: EdgeInsets.only(top: 10.0),
+                  //padding: EdgeInsets.only(top: 0.0),
                   child: Text(
-                    courseName,
+                    teacher,
                     style: TextStyle(
-                        fontSize: 20.0,
+                        fontSize: 15.0,
                         fontFamily: 'RobotoMono',
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 0.0),
-                //padding: EdgeInsets.only(top: 0.0),
-                child: Text(
-                  teacher,
-                  style: TextStyle(
-                      fontSize: 15.0,
-                      fontFamily: 'RobotoMono',
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 0.0),
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.12,
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('images/$imgPath'),
-                        fit: BoxFit.cover),
+                Padding(
+                  padding: EdgeInsets.only(top: 0.0),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.12,
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('images/$imgPath'),
+                          fit: BoxFit.cover),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

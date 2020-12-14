@@ -1,30 +1,78 @@
 import 'package:flutter/material.dart';
+import 'package:timeline_tile/timeline_tile.dart';
+import 'package:page_transition/page_transition.dart';
+import 'home_page.dart';
 import './notePage.dart';
-class Searchpage extends StatelessWidget {
+
+class ViewallPage extends StatefulWidget {
+  @override
+  _ViewallPageState createState() => _ViewallPageState();
+}
+
+class _ViewallPageState extends State<ViewallPage> {
   @override
   Widget build(BuildContext context) {
-    return 
-  Scaffold(
-        body: ListView(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(right: 15.0, top: 20.0, left: 15.0),
-          child: Text(
-            'Hi User',
-            style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(right: 15.0, top: 10.0, left: 15.0),
-          child: Text(
-            'Explore Notes',
-            style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-          child: SearchBar()),
+    double screenSize = MediaQuery.of(context).size.height;
 
+    return Scaffold(
+      backgroundColor: Color(0xfffbfcfc),
+      /*appBar: AppBar(
+        iconTheme: IconThemeData(color: Color(0xff619b8a)),
+        actions: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: CircleAvatar(
+              minRadius: 25.0,
+              backgroundColor: Color(0xFF619b8a),
+            ),
+          )
+        ],
+        title: Text(
+          'noted',
+          style: TextStyle(
+              fontSize: 38.0,
+              color: Color(0xFF619b8a),
+              fontFamily: 'timesnewroman',
+              fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Color(0xfffbfcfc),
+      ),*/
+      body: ListView(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(
+              left: 10.0,
+              right: 30.0,
+              bottom: 10.0,
+              top: 20.0,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.arrow_back_ios),
+                  onPressed: () {
+                    Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: HomePage()));
+                  },
+                ),
+                Text(
+                  'All Notes',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      fontFamily: 'RobotoMono',
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
           Padding(
             padding: EdgeInsets.all(10.0),
             child: Column(
@@ -52,8 +100,9 @@ class Searchpage extends StatelessWidget {
               ],
             ),
           ),
-      ],
-    ));
+        ],
+      ),
+    );
   }
 }
 
@@ -109,32 +158,31 @@ class CourseCard extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-        ),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Column(
-              children: <Widget>[
-                HorizontalCard(
-                    'Advanced Java Programming', 'Uttam K. Roy',
-                    'Openbook_.png'),
-                HorizontalCard(
-                    'Design and Analysis of Algorithms', 'A.A.Puntambekar',
-                    'Openbook_.png'),
-                HorizontalCard(
-                    'Cyber Security', 'Simon Singh', 'Book.png'),
-                HorizontalCard(
-                    'Software Engineering', 'DSC', 'Book.png'),
-                HorizontalCard(
-                    'Operating Systems', 'Greg Gagne', 'Openbook_.png'),
-                HorizontalCard('Computer Networks',
-                    'Andrew S. Tanenbaum', 'Notes.png'),
-                HorizontalCard('Object Oriented Programming Languuage',
-                    'E Balagurusamy', 'Openbook_.png')
-            ],
-          ),
-          ),
-
-      ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 0.0),
+                  //padding: EdgeInsets.only(top: 0.0),
+                  child: Text(
+                    teacher,
+                    style: TextStyle(
+                        fontSize: 15.0,
+                        fontFamily: 'RobotoMono',
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 0.0),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.12,
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('images/$imgPath'),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -235,65 +283,3 @@ class HorizontalCard extends StatelessWidget {
     );
   }
 }
-
-
-class SearchBar extends StatefulWidget {
-  @override
-  _SearchBarState createState() => _SearchBarState();
-}
-
-class _SearchBarState extends State<SearchBar> {
-  @override
-  Widget build(BuildContext context) {
-   return AnimatedContainer(
-      duration: Duration(milliseconds: 400),
-      width: 50.0,
-      height: 56,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(32),
-        color: Colors.white,
-        boxShadow: kElevationToShadow[6],
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.only(left: 16),
-              child: 
-                   TextField(
-                      decoration: InputDecoration(
-                          hintText: 'Search',
-                          hintStyle: TextStyle(color: Colors.grey),
-                          border: InputBorder.none),
-                    )
-                  ,
-            ),
-          ),
-          Container(
-            
-            child: Material(
-              type: MaterialType.transparency,
-              child: InkWell(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(0.0),
-                  topRight: Radius.circular(32),
-                  bottomLeft: Radius.circular(0.0),
-                  bottomRight: Radius.circular(32),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: InkWell(
-                    child: Icon(Icons.search),
-                    onTap: (){},
-                  )
-                ),
-                
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
