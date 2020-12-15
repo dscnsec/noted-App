@@ -3,6 +3,7 @@ import 'dart:wasm';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:noted/aj.dart';
+import 'package:noted/bookmark.dart';
 import 'package:noted/ca.dart';
 import 'package:noted/cs.dart';
 import 'package:noted/csn.dart';
@@ -10,9 +11,12 @@ import 'package:noted/da.dart';
 import 'package:noted/dm.dart';
 import 'package:noted/dq.dart';
 import 'package:noted/dsa.dart';
+import 'package:noted/dst.dart';
+import 'package:noted/main.dart';
 import 'package:noted/md.dart';
 import 'package:noted/mpp.dart';
 import 'package:noted/os.dart';
+import 'package:noted/qu.dart';
 import 'package:noted/se.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -46,7 +50,7 @@ class _HomePageState extends State<HomePage> {
               )
             ],
             title: Text(
-              'noted',
+              'Noted',
               style: TextStyle(
                   fontSize: 38.0,
                   fontFamily: 'timesnewroman',
@@ -61,16 +65,18 @@ class _HomePageState extends State<HomePage> {
               // Important: Remove any padding from the ListView.
               padding: EdgeInsets.zero,
               children: <Widget>[
-                new UserAccountsDrawerHeader(accountName: new Text("DSCNESC"),
+                new UserAccountsDrawerHeader(accountName: new Text("DSCNSEC"),
                   accountEmail: new Text("dscnsecorg@gmail.com"),
                   currentAccountPicture: new CircleAvatar(
                     backgroundColor:  Colors.white,
                     child: new Text("D"),
+
                   ),
                   otherAccountsPictures: <Widget>[
                     new CircleAvatar(
                       backgroundColor:  Colors.white,
                       child: new Text("R"),
+
                     )
                   ],
 
@@ -79,10 +85,11 @@ class _HomePageState extends State<HomePage> {
                 ListTile(
                   title: Text(
                     'Search',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        fontFamily: 'RobotoMono',
-                        fontWeight: FontWeight.w500),
+                  //  style: TextStyle(
+                        //fontSize: 20.0,
+                        //fontFamily: 'RobotoMono',
+                        //fontWeight: FontWeight.w500, ),
+                      style: TextStyle(fontSize: 23.0, color: Colors.blueAccent),
                   ),
                   onTap: () {
                     Navigator.pop(context);
@@ -94,14 +101,10 @@ class _HomePageState extends State<HomePage> {
                             child: Searchpage()));
                   },
                 ),
-
                 ListTile(
                   title: Text(
-                    'Syllabus',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        fontFamily: 'RobotoMono',
-                        fontWeight: FontWeight.w500),
+                    'All Subject',
+                      style: TextStyle(fontSize: 23.0, color: Colors.blueAccent)
                   ),
                   onTap: () {
                     Navigator.pop(context);
@@ -109,13 +112,92 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                         context,
                         PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: Dst()));
+                  },
+                ),    ListTile(
+                  title: Text(
+                    'Book Mark',
+                      style: TextStyle(fontSize: 23.0, color: Colors.blueAccent)
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: Bookmark()));
+                  },
+                ),   ListTile(
+                  title: Text(
+                    'Quizzes',
+                      style: TextStyle(fontSize: 23.0, color: Colors.blueAccent)
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: Qu()));
+                  },
+                ),   ListTile(
+                  title: Text(
+                    'Year',
+                      style: TextStyle(fontSize: 23.0, color: Colors.blueAccent)
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.leftToRight,
                             child: SyllabusPage()));
-                    new Divider();
-                    new ListTile(
-                    title: new Text("Close"),
-                    trailing: new Icon(Icons.close),
-                    onTap: ()=> Navigator.of(context).pop(),
-                    );
+                  },
+                ),  ListTile(
+                  title: Text(
+                    'Syllabus',
+                      style: TextStyle(fontSize: 23.0, color: Colors.blueAccent)
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: Qu()));
+                  },
+                ),  ListTile(
+                  title: Text(
+                    'Discover Subject Topics',
+                      style: TextStyle(fontSize: 23.0, color: Colors.blueAccent)
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            type: PageTransitionType.leftToRight,
+                            child: Dst()));
+                  },
+                ),
+                ListTile(
+                  title: Text(
+                    'close',
+                      style: TextStyle(fontSize: 23.0, color: Colors.blueAccent)
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        PageTransition(
+                            child:MyHomePage()));
                   },
                 ),
               ],
