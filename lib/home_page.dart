@@ -45,11 +45,19 @@ class _HomePageState extends State<HomePage> {
               // Important: Remove any padding from the ListView.
               padding: EdgeInsets.zero,
               children: <Widget>[
-                DrawerHeader(
-                  child: Text('Drawer Header'),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF619b8a),
+                new UserAccountsDrawerHeader(accountName: new Text("DSCNSEC"),
+                  accountEmail: new Text("dscnsec@gmail.com"),
+                  currentAccountPicture: new CircleAvatar(
+                    backgroundColor:  Colors.white,
+                    child: new Text("D"),
                   ),
+                  otherAccountsPictures: <Widget>[
+                    new CircleAvatar(
+                      backgroundColor:  Colors.white,
+                      child: new Text("R"),
+                    )
+                  ],
+
                 ),
                 ListTile(
                   title: Text(
