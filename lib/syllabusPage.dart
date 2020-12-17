@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'home_page.dart';
+import 'package:tree_view/tree_view.dart';
 
 class SyllabusPage extends StatefulWidget {
   @override
@@ -8,118 +9,97 @@ class SyllabusPage extends StatefulWidget {
 }
 
 class _SyllabusPageState extends State<SyllabusPage> {
+  String jsonSyllabus;
+
   @override
   Widget build(BuildContext context) {
-    double screenSize = MediaQuery.of(context).size.height;
-
     return Scaffold(
-      backgroundColor: Color(0xfffbfcfc),
-      body: ListView(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Column(
-              children: <Widget>[
-                HorizontalCard('Computer is bad for computers', 'profName',
-                    'Openbook_.png'),
-                HorizontalCard('Computer is bad for computers', 'profName',
-                    'Openbook_.png'),
+      backgroundColor: Color(0xff16697a),
+      body: TreeView(
+        parentList: [
+          Parent(
+            parent: SyllabusCard(
+              name: "Computer Science",
+              level: 0,
+            ),
+            childList: ChildList(
+              children: [
+                Parent(
+                  parent: SyllabusCard(
+                    name: "Semester 1",
+                    level: 1,
+                  ),
+                  childList: ChildList(
+                    children: <Widget>[
+                      SyllabusCard(
+                        name: "Data Structure and Analysis",
+                        level: 2,
+                      ),
+                      SyllabusCard(
+                        name: "Computer Organization",
+                        level: 2,
+                      ),
+                    ],
+                  ),
+                ),
+                SyllabusCard(
+                  name: "Semester 2",
+                  level: 1,
+                ),
+                SyllabusCard(
+                  name: "Semester 3",
+                  level: 1,
+                ),
+                SyllabusCard(
+                  name: "Semester 4",
+                  level: 1,
+                ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );
   }
 }
 
-class HorizontalCard extends StatelessWidget {
-  final String subjName;
-  final String profName;
-  final String imgpPath;
+class SyllabusCard extends StatelessWidget {
+  const SyllabusCard({
+    @required this.name,
+    @required this.level,
+  });
 
-  const HorizontalCard(
-    this.subjName,
-    this.profName,
-    this.imgpPath,
-  );
+  final String name;
+  final int level;
 
   @override
   Widget build(BuildContext context) {
-    double screenSize = MediaQuery.of(context).size.height;
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 15.0),
-      child: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Flexible(
-              child: Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Flexible(
-                      child: Container(
-                        child: Text(
-                          subjName,
-                          style: TextStyle(
-                              fontSize: screenSize > 700 ? 22.0 : 20,
-                              fontFamily: 'RobotoMono',
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    Flexible(
-                      child: Container(
-                        child: Text(
-                          "By Prof. $profName",
-                          style: TextStyle(
-                              fontSize: screenSize > 700 ? 15.0 : 13,
-                              fontFamily: 'RobotoMono',
-                              fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              height: screenSize > 700
-                  ? MediaQuery.of(context).size.height * 0.2
-                  : MediaQuery.of(context).size.height * 0.22,
-              width: MediaQuery.of(context).size.width * 0.35,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(30.0),
-                  bottomRight: Radius.circular(30.0),
-                ),
-                //color: Colors.red,
-                image: DecorationImage(
-                    image: AssetImage('images/$imgpPath'), fit: BoxFit.cover),
-              ),
-            )
-          ],
+    return Container(
+      padding: EdgeInsets.only(
+        left: (level * 40) + 8.0,
+        right: 8.0,
+        top: 8.0,
+        bottom: 0.0,
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
         ),
-        height: screenSize > 700
-            ? MediaQuery.of(context).size.height * 0.2
-            : MediaQuery.of(context).size.height * 0.22,
-        width: MediaQuery.of(context).size.width * 0.9,
-        decoration: BoxDecoration(
-          color: Color(0xfffbfcfc),
-          //color: Colors.grey[200],
-          borderRadius: BorderRadius.all(
-            Radius.circular(30.0),
-          ),
-          boxShadow: [
-            new BoxShadow(
-              offset: Offset(0, 15),
-              color: Color(0xff666666).withOpacity(.11),
-              blurRadius: 30.0,
+        elevation: 6.0,
+        shadowColor: Colors.white,
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: Text(
+              name,
+              style: TextStyle(
+                fontSize: 16.0,
+                fontFamily: 'RobotoMono',
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ],
+          ),
         ),
       ),
     );
