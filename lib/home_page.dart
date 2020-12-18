@@ -9,6 +9,7 @@ import './viewallPage.dart';
 import './notePage.dart';
 import './search_page.dart';
 import './chaptersPage.dart';
+import 'main.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,11 +17,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool _switchValue = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Color(0xFFd8e5e1),
+          backgroundColor: _switchValue ? Color(0xff264753) : Color(0xFFd8e5e1),
           appBar: AppBar(
             actions: <Widget>[
               Padding(
@@ -41,17 +43,20 @@ class _HomePageState extends State<HomePage> {
             ),
             centerTitle: true,
             elevation: 0,
-            backgroundColor: Color(0xFFd8e5e1),
+            backgroundColor:
+                _switchValue ? Color(0xff264753) : Color(0xFFd8e5e1),
           ),
           drawer: Drawer(
             child: ListView(
               // Important: Remove any padding from the ListView.
+
               padding: EdgeInsets.zero,
+
               children: <Widget>[
                 DrawerHeader(
                   child: Text('Drawer Header'),
                   decoration: BoxDecoration(
-                    color: Color(0xFF619b8a),
+                    color: _switchValue ? Color(0xff264753) : Color(0xFFd8e5e1),
                   ),
                 ),
                 ListTile(
@@ -90,6 +95,21 @@ class _HomePageState extends State<HomePage> {
                             child: SyllabusPage()));
                   },
                 ),
+                Row(
+                  children: [
+                    SizedBox(width: 20),
+                    Text('Light'),
+                    Switch(
+                      value: _switchValue,
+                      onChanged: (newValue) {
+                        setState(() {
+                          _switchValue = newValue;
+                        });
+                      },
+                    ),
+                    Text('Dark'),
+                  ],
+                ),
               ],
             ),
           ),
@@ -121,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                                 type: PageTransitionType.rightToLeft,
                                 child: ViewallPage()));
                       },
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -133,7 +153,9 @@ class _HomePageState extends State<HomePage> {
                       height: MediaQuery.of(context).size.height * 1.5,
                       width: MediaQuery.of(context).size.width * 1.0,
                       decoration: BoxDecoration(
-                        color: Color(0xfffbfcfc),
+                        color: _switchValue
+                            ? Color(0xff264753)
+                            : Color(0xFFd8e5e1),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(55.0),
                           topRight: Radius.circular(55.0),
@@ -176,7 +198,9 @@ class _HomePageState extends State<HomePage> {
                           child: Text(
                             'More to learn',
                             style: TextStyle(
+
                                 //fontWeight: FontWeight.bold,
+
                                 fontSize: 20.0,
                                 fontFamily: 'RobotoMono',
                                 fontWeight: FontWeight.bold),
@@ -272,7 +296,7 @@ class HorizontalCard extends StatelessWidget {
                   bottomRight: Radius.circular(30.0),
                 ),
                 //color: Colors.red,
-                //color: Color(0xFF619b8a).withOpacity(0.11),
+                color: Colors.white,
                 image: DecorationImage(
                     image: AssetImage('images/$imgpPath'), fit: BoxFit.cover),
               ),
@@ -285,7 +309,7 @@ class HorizontalCard extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.9,
         decoration: BoxDecoration(
           //color: Color(0xfffbfcfc),
-          color: Color(0xFF619b8a).withOpacity(0.11),
+          color: Colors.white,
           //color: Colors.grey[200],
           borderRadius: BorderRadius.all(
             Radius.circular(30.0),
