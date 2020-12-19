@@ -2,6 +2,7 @@ import 'dart:wasm';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gradient_colors/flutter_gradient_colors.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import './syllabusPage.dart';
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: _switchValue ? Color(0xff264753) : Color(0xFFd8e5e1),
+          backgroundColor: _switchValue ? Color(0xFF3E2723) : Color(0xFFFFF3E0),
           appBar: AppBar(
             actions: <Widget>[
               Padding(
@@ -43,8 +44,7 @@ class _HomePageState extends State<HomePage> {
             ),
             centerTitle: true,
             elevation: 0,
-            backgroundColor:
-                _switchValue ? Color(0xff264753) : Color(0xFFd8e5e1),
+            backgroundColor: _switchValue ? Colors.blueGrey : Colors.amber,
           ),
           drawer: Drawer(
             child: ListView(
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                 DrawerHeader(
                   child: Text('Drawer Header'),
                   decoration: BoxDecoration(
-                    color: _switchValue ? Color(0xff264753) : Color(0xFFd8e5e1),
+                    color: _switchValue ? Colors.blueGrey : Colors.amber,
                   ),
                 ),
                 ListTile(
@@ -128,6 +128,8 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       'My Notes',
                       style: TextStyle(
+                          color:
+                              _switchValue ? Colors.yellowAccent : Colors.black,
                           fontSize: 20.0,
                           fontFamily: 'RobotoMono',
                           fontWeight: FontWeight.bold),
@@ -154,8 +156,8 @@ class _HomePageState extends State<HomePage> {
                       width: MediaQuery.of(context).size.width * 1.0,
                       decoration: BoxDecoration(
                         color: _switchValue
-                            ? Color(0xff264753)
-                            : Color(0xFFd8e5e1),
+                            ? Color(0xFF303030)
+                            : Color(0xFFE0F7FA),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(55.0),
                           topRight: Radius.circular(55.0),
@@ -200,7 +202,9 @@ class _HomePageState extends State<HomePage> {
                             style: TextStyle(
 
                                 //fontWeight: FontWeight.bold,
-
+                                color: _switchValue
+                                    ? Colors.yellowAccent
+                                    : Colors.black,
                                 fontSize: 20.0,
                                 fontFamily: 'RobotoMono',
                                 fontWeight: FontWeight.bold),
