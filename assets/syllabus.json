@@ -21,14 +21,15 @@
           "Circuits",
           "Computer Organization",
           "Analog and digital electronics"
-        ]
+        ],
+        ["Physics", "Electrical", "Maths"]
       ]
     },
     {
       "stream": "Information Technology",
       "semester": [
         ["Physics", "English", "Maths"],
-        ["Chemistry", "Engineering Drawing", "Programming"],
+        ["Chemistry", "Python", "Programming"],
         [
           "Data Structures",
           "Computer Organization",
@@ -44,7 +45,8 @@
         [
           "Data Structures",
           "Computer Organization",
-          "Analog and digital electronics"
+          "Analog and digital electronics",
+          "Maths"
         ]
       ]
     },

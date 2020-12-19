@@ -3,7 +3,17 @@ import 'package:timeline_tile/timeline_tile.dart';
 import 'home_page.dart';
 import 'package:tree_view/tree_view.dart';
 import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 
+Future<String> _loadSyllabusAsset() async {
+  return await rootBundle.loadString('assets/syllabus.json');
+}
+
+Future<Map<String, dynamic>> loadSyllabus() async {
+  String data = await _loadSyllabusAsset();
+  final jsonSyllabus = jsonDecode(data) as Map<String, dynamic>;
+  return jsonSyllabus;
+}
 
 class SyllabusPage extends StatefulWidget {
   @override
@@ -12,24 +22,10 @@ class SyllabusPage extends StatefulWidget {
 
 class _SyllabusPageState extends State<SyllabusPage> {
   Map<String, dynamic> jsonSyllabus;
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await loadJson();
-    });
-    loadJson();
-  }
-
-  loadJson() async {
-    String data =
-        await DefaultAssetBundle.of(context).loadString("assets/syllabus.json");
-    jsonSyllabus = jsonDecode(data) as Map<String, dynamic>;
-  }
 
   List<Parent> getStream() {
     List<Parent> childs = [];
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < jsonSyllabus['syllabus'].length; i++) {
       childs.add(
         Parent(
           parent: SyllabusCard(
@@ -38,7 +34,9 @@ class _SyllabusPageState extends State<SyllabusPage> {
           ),
           childList: ChildList(
             children: <Widget>[
-              for (var j = 0; j < 3; j++)
+              for (var j = 0;
+                  j < jsonSyllabus['syllabus'][i]['semester'].length;
+                  j++)
                 Parent(
                   parent: SyllabusCard(
                     name: "Semester" + ((j + 1).toString()),
@@ -46,9 +44,11 @@ class _SyllabusPageState extends State<SyllabusPage> {
                   ),
                   childList: ChildList(
                     children: <Widget>[
-                      for (var k = 0; k < 3; k++)
+                      for (var k = 0;
+                          k < jsonSyllabus['syllabus'][i]['semester'][j].length;
+                          k++)
                         SyllabusCard(
-                          name: jsonSyllabus['syllabus'][k]['semester'][j][k],
+                          name: jsonSyllabus['syllabus'][i]['semester'][j][k],
                           level: 2,
                         ),
                     ],
@@ -64,94 +64,22 @@ class _SyllabusPageState extends State<SyllabusPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xff16697a),
-      body: TreeView(
-        parentList: getStream(),
-
-        //     [
-        //   Parent(
-        //     parent: SyllabusCard(
-        //       name: "Computer Science",
-        //       level: 0,
-        //     ),
-        //     childList: ChildList(
-        //       children: [
-        //         Parent(
-        //           parent: SyllabusCard(
-        //             name: "Semester 1",
-        //             level: 1,
-        //           ),
-        //           childList: ChildList(
-        //             children: <Widget>[
-        //               SyllabusCard(
-        //                 name: "Data Structure and Analysis",
-        //                 level: 2,
-        //               ),
-        //               SyllabusCard(
-        //                 name: "Computer Organization",
-        //                 level: 2,
-        //               ),
-        //             ],
-        //           ),
-        //         ),
-        //         SyllabusCard(
-        //           name: "Semester 2",
-        //           level: 1,
-        //         ),
-        //         SyllabusCard(
-        //           name: "Semester 3",
-        //           level: 1,
-        //         ),
-        //         SyllabusCard(
-        //           name: "Semester 4",
-        //           level: 1,
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        //   Parent(
-        //     parent: SyllabusCard(
-        //       name: "Computer Science",
-        //       level: 0,
-        //     ),
-        //     childList: ChildList(
-        //       children: [
-        //         Parent(
-        //           parent: SyllabusCard(
-        //             name: "Semester 1",
-        //             level: 1,
-        //           ),
-        //           childList: ChildList(
-        //             children: <Widget>[
-        //               SyllabusCard(
-        //                 name: "Data Structure and Analysis",
-        //                 level: 2,
-        //               ),
-        //               SyllabusCard(
-        //                 name: "Computer Organization",
-        //                 level: 2,
-        //               ),
-        //             ],
-        //           ),
-        //         ),
-        //         SyllabusCard(
-        //           name: "Semester 2",
-        //           level: 1,
-        //         ),
-        //         SyllabusCard(
-        //           name: "Semester 3",
-        //           level: 1,
-        //         ),
-        //         SyllabusCard(
-        //           name: "Semester 4",
-        //           level: 1,
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ],
-      ),
+    return FutureBuilder<Map<String, dynamic>>(
+      future: loadSyllabus(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          jsonSyllabus = snapshot.data;
+          return Scaffold(
+            backgroundColor: Color(0xff16697a),
+            body: TreeView(
+              parentList: getStream(),
+            ),
+          );
+        } else if (snapshot.hasError) {
+          return Text("${snapshot.error}");
+        }
+        return CircularProgressIndicator();
+      },
     );
   }
 }
