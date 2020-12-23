@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: _switchValue ? Color(0xFF3E2723) : Color(0xFFFFF3E0),
+          backgroundColor: _switchValue ? Color(0xFF619B8A) : Color(0xFFEDEFE3),
           appBar: AppBar(
             actions: <Widget>[
               Padding(
@@ -44,7 +44,8 @@ class _HomePageState extends State<HomePage> {
             ),
             centerTitle: true,
             elevation: 0,
-            backgroundColor: _switchValue ? Colors.blueGrey : Colors.amber,
+            backgroundColor:
+                _switchValue ? Color(0xFFA1C181) : Color(0xFFFE7F2D),
           ),
           drawer: Drawer(
             child: ListView(
@@ -56,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                 DrawerHeader(
                   child: Text('Drawer Header'),
                   decoration: BoxDecoration(
-                    color: _switchValue ? Colors.blueGrey : Colors.amber,
+                    color: _switchValue ? Color(0xFFA1C181) : Color(0xFFFE7F2D),
                   ),
                 ),
                 ListTile(
@@ -129,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                       'My Notes',
                       style: TextStyle(
                           color:
-                              _switchValue ? Colors.yellowAccent : Colors.black,
+                              _switchValue ? Colors.black : Color(0xFF233D4D),
                           fontSize: 20.0,
                           fontFamily: 'RobotoMono',
                           fontWeight: FontWeight.bold),
@@ -156,8 +157,8 @@ class _HomePageState extends State<HomePage> {
                       width: MediaQuery.of(context).size.width * 1.0,
                       decoration: BoxDecoration(
                         color: _switchValue
-                            ? Color(0xFF303030)
-                            : Color(0xFFE0F7FA),
+                            ? Color(0xFF619B8A)
+                            : Color(0xFFEDEFE3),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(55.0),
                           topRight: Radius.circular(55.0),
@@ -203,8 +204,8 @@ class _HomePageState extends State<HomePage> {
 
                                 //fontWeight: FontWeight.bold,
                                 color: _switchValue
-                                    ? Colors.yellowAccent
-                                    : Colors.black,
+                                    ? Colors.black
+                                    : Color(0xFF233D4D),
                                 fontSize: 20.0,
                                 fontFamily: 'RobotoMono',
                                 fontWeight: FontWeight.bold),
