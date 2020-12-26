@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:slider_button/slider_button.dart';
 import './appInfo.dart';
 import './home_page.dart';
+import 'loginPage.dart';
 
 void main() {
   runApp(MyApp());

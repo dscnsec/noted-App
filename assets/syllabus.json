@@ -1,0 +1,67 @@
+{
+  "syllabus": [
+    {
+      "stream": "Computer Science and Engineering",
+      "semester": [
+        ["Physics", "English", "Maths"],
+        ["Chemistry", "Engineering Drawing", "Programming"],
+        [
+          "Data Structures",
+          "Computer Organization",
+          "Analog and digital electronics"
+        ]
+      ]
+    },
+    {
+      "stream": "Electrical Engineering",
+      "semester": [
+        ["Physics", "Electrical", "Maths"],
+        ["Chemistry", "Engineering Drawing", "Programming"],
+        [
+          "Circuits",
+          "Computer Organization",
+          "Analog and digital electronics"
+        ],
+        ["Physics", "Electrical", "Maths"]
+      ]
+    },
+    {
+      "stream": "Information Technology",
+      "semester": [
+        ["Physics", "English", "Maths"],
+        ["Chemistry", "Python", "Programming"],
+        [
+          "Data Structures",
+          "Computer Organization",
+          "Analog and digital electronics"
+        ]
+      ]
+    },
+    {
+      "stream": "Electronics and communicaton engineering",
+      "semester": [
+        ["Physics", "English", "Maths"],
+        ["Chemistry", "Engineering Drawing", "Programming"],
+        [
+          "Data Structures",
+          "Computer Organization",
+          "Analog and digital electronics",
+          "Maths",
+          "Physics"
+        ]
+      ]
+    },
+    {
+      "stream": "Civil engineering",
+      "semester": [
+        ["Physics", "English", "Maths"],
+        ["Chemistry", "Engineering Drawing", "Programming"],
+        [
+          "Data Structures",
+          "Computer Organization",
+          "Analog and digital electronics"
+        ]
+      ]
+    }
+  ]
+}

@@ -25,6 +25,8 @@ dependencies:
   page_transition: ^1.1.7+2
   font_awesome_flutter: ^8.10.0
   timeline_tile: ^0.1.0
+  tree_view: ^0.0.5
+  timelines: ^0.0.2+1
  
   flutter:
     sdk: flutter
@@ -53,6 +55,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
+    - assets/syllabus.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
