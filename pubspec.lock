@@ -163,6 +163,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
+  timelines:
+    dependency: "direct main"
+    description:
+      name: timelines
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.2+1"
   tree_view:
     dependency: "direct main"
     description:
@@ -193,4 +200,4 @@ packages:
     version: "1.5.0"
 sdks:
   dart: ">=2.10.0-110 <2.11.0"
-  flutter: ">=1.10.0 <2.0.0"
+  flutter: ">=1.17.0 <2.0.0"

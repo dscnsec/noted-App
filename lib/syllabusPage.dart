@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'home_page.dart';
-import 'package:tree_view/tree_view.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:timelines/timelines.dart';
 
 Future<String> _loadSyllabusAsset() async {
   return await rootBundle.loadString('assets/syllabus.json');
@@ -22,45 +22,7 @@ class SyllabusPage extends StatefulWidget {
 
 class _SyllabusPageState extends State<SyllabusPage> {
   Map<String, dynamic> jsonSyllabus;
-
-  List<Parent> getStream() {
-    List<Parent> childs = [];
-    for (var i = 0; i < jsonSyllabus['syllabus'].length; i++) {
-      childs.add(
-        Parent(
-          parent: SyllabusCard(
-            name: jsonSyllabus['syllabus'][i]['stream'],
-            level: 0,
-          ),
-          childList: ChildList(
-            children: <Widget>[
-              for (var j = 0;
-                  j < jsonSyllabus['syllabus'][i]['semester'].length;
-                  j++)
-                Parent(
-                  parent: SyllabusCard(
-                    name: "Semester" + ((j + 1).toString()),
-                    level: 1,
-                  ),
-                  childList: ChildList(
-                    children: <Widget>[
-                      for (var k = 0;
-                          k < jsonSyllabus['syllabus'][i]['semester'][j].length;
-                          k++)
-                        SyllabusCard(
-                          name: jsonSyllabus['syllabus'][i]['semester'][j][k],
-                          level: 2,
-                        ),
-                    ],
-                  ),
-                ),
-            ],
-          ),
-        ),
-      );
-    }
-    return childs;
-  }
+  int stream = 3, sem = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +33,57 @@ class _SyllabusPageState extends State<SyllabusPage> {
           jsonSyllabus = snapshot.data;
           return Scaffold(
             backgroundColor: Color(0xff16697a),
-            body: TreeView(
-              parentList: getStream(),
+            body: Padding(
+              padding: EdgeInsets.only(top: 40.0),
+              child: Timeline.tileBuilder(
+                theme: TimelineThemeData(
+                  nodePosition: 0.1,
+                  indicatorTheme: IndicatorThemeData(
+                    position: 0,
+                    size: 25,
+                    color: Color(0xfffcca46),
+                  ),
+                  connectorTheme: ConnectorThemeData(
+                    thickness: 5,
+                    color: Color(0xfffcca46),
+                    indent: 4.0,
+                  ),
+                ),
+                builder: TimelineTileBuilder.fromStyle(
+                  contentsBuilder: (context, index) => Padding(
+                    padding: EdgeInsets.only(
+                      top: 10.0,
+                      left: 10.0,
+                      right: 10.0,
+                      bottom: 50.0,
+                    ),
+                    child: Container(
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6.0),
+                        ),
+                        elevation: 6.0,
+                        shadowColor: Colors.white,
+                        color: Colors.white,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            jsonSyllabus['syllabus'][stream]['semester'][sem]
+                                [index],
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontFamily: 'RobotoMono',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  itemCount:
+                      jsonSyllabus['syllabus'][stream]['semester'][sem].length,
+                ),
+              ),
             ),
           );
         } else if (snapshot.hasError) {
@@ -80,47 +91,6 @@ class _SyllabusPageState extends State<SyllabusPage> {
         }
         return CircularProgressIndicator();
       },
-    );
-  }
-}
-
-class SyllabusCard extends StatelessWidget {
-  const SyllabusCard({
-    @required this.name,
-    @required this.level,
-  });
-
-  final String name;
-  final int level;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(
-        left: (level * 40) + 8.0,
-        right: 8.0,
-        top: level == 0 ? 20.0 : 0.0,
-        bottom: 0.0,
-      ),
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6.0),
-        ),
-        elevation: 9.0,
-        shadowColor: Colors.white,
-        color: Colors.white.withOpacity(1 - (0.2 * level)),
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(
-            name,
-            style: TextStyle(
-              fontSize: 16.0,
-              fontFamily: 'RobotoMono',
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
