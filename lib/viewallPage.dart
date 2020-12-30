@@ -5,6 +5,7 @@ import 'home_page.dart';
 import './notePage.dart';
 import './chaptersPage.dart';
 
+
 class ViewallPage extends StatefulWidget {
   @override
   _ViewallPageState createState() => _ViewallPageState();
@@ -268,3 +269,4 @@ class TwoSideRoundedButton extends StatelessWidget {
     );
   }
 }
+
