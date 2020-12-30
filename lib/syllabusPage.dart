@@ -57,8 +57,7 @@ class HorizontalCard extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment
-                      .spaceEvenly, // PLAY AROUND WITH THIS, MAYBE CHANGE SPACEeVENLY TO SPACEbETWEEN XDXDXD the ROASSST
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Flexible(
@@ -116,8 +115,9 @@ class HorizontalCard extends StatelessWidget {
           ),
           boxShadow: [
             new BoxShadow(
-              color: Color(0xffe2e2e2),
-              blurRadius: 6.0,
+              offset: Offset(0, 15),
+              color: Color(0xff666666).withOpacity(.11),
+              blurRadius: 30.0,
             ),
           ],
         ),

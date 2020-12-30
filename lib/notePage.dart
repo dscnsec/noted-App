@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './home_page.dart';
+import './chaptersPage.dart';
 
 class NotePage extends StatefulWidget {
   final String subjName;
@@ -28,6 +29,7 @@ class _NotePageState extends State<NotePage> {
                     fit: BoxFit.cover)),
           ),
           Container(
+            // height: MediaQuery.of(context).size.height * 0.8,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -38,16 +40,19 @@ class _NotePageState extends State<NotePage> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: EdgeInsets.only(left: 25.0, top: 5.0),
+                padding: EdgeInsets.only(left: 28.0, top: 5.0),
                 child: Column(
                   children: <Widget>[
-                    Text(
-                      widget.subjName,
-                      style: TextStyle(
-                          fontFamily: 'RobotoMono',
-                          fontSize: MediaQuery.of(context).size.width * 0.1,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black54),
+                    Padding(
+                      padding: EdgeInsets.only(left: 0.0, top: 15.0),
+                      child: Text(
+                        widget.subjName,
+                        style: TextStyle(
+                            fontFamily: 'RobotoMono',
+                            fontSize: MediaQuery.of(context).size.width * 0.08,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54),
+                      ),
                     ),
                     //Content will come down here
                     Padding(
@@ -65,29 +70,34 @@ class _NotePageState extends State<NotePage> {
                           style: TextStyle(
                               fontFamily: 'RobotoMono',
                               fontSize:
-                                  MediaQuery.of(context).size.width * 0.05,
+                                  MediaQuery.of(context).size.width * 0.04,
                               color: Colors.black54),
                         ),
                       ),
                     ),
-                    RaisedButton(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 30.0,
-                          vertical: 15.0,
-                        ),
-                        color: Color(0xFF29998C),
-                        child: Text(
-                          "Return to pathway",
-                          style: TextStyle(fontSize: 15.0, color: Colors.white),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => HomePage()),
-                          );
-                        },
-                        shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30.0)))
+                    Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: RaisedButton(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 30.0,
+                            vertical: 15.0,
+                          ),
+                          color: Color(0xFF29998C),
+                          child: Text(
+                            "Return to pathway",
+                            style:
+                                TextStyle(fontSize: 15.0, color: Colors.white),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()),
+                            );
+                          },
+                          shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0))),
+                    )
                   ],
                 ),
               ),
