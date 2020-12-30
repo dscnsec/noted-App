@@ -8,9 +8,14 @@ import './viewallPage.dart';
 import './notePage.dart';
 import './search_page.dart';
 
+
+
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
+
+
 }
 
 class _HomePageState extends State<HomePage> {
@@ -198,6 +203,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+
 class HorizontalCard extends StatelessWidget {
   final String subjName;
   final String profName;
@@ -374,3 +380,4 @@ class CourseCard extends StatelessWidget {
     );
   }
 }
+

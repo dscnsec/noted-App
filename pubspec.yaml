@@ -25,6 +25,10 @@ dependencies:
   page_transition: ^1.1.7+2
   font_awesome_flutter: ^8.10.0
   timeline_tile: ^0.1.0
+  speech_recognition: ^0.3.0+1
+  speech_to_text: ^2.4.1
+  highlight_text: ^0.7.2
+  avatar_glow:  ^1.2.0
  
   flutter:
     sdk: flutter

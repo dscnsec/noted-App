@@ -4,6 +4,7 @@ import 'package:page_transition/page_transition.dart';
 import 'home_page.dart';
 import './notePage.dart';
 
+
 class ViewallPage extends StatefulWidget {
   @override
   _ViewallPageState createState() => _ViewallPageState();
@@ -283,3 +284,4 @@ class HorizontalCard extends StatelessWidget {
     );
   }
 }
+
